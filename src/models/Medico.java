@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package hospitalrural;
+package models;
 
 import java.util.ArrayList;
 
