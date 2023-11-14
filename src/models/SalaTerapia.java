@@ -6,19 +6,22 @@
 
 package models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Rachel
  */
-public class SalaTerapia {
+public class SalaTerapia extends Sala{
    private String tipoSala;
    private boolean companion;
    private String nombreDirector;
-    
-    public SalaTerapia (String tipoSala, boolean companion, String nombreDirector){
-        this.tipoSala=tipoSala;
-        this.companion=companion;
-        this.nombreDirector=nombreDirector;
+
+    public SalaTerapia(String tipoSala, boolean companion, String nombreDirector, String nombre, ArrayList<String> enfermedades, int cantMaximaCamas, int camasOcupadas, ArrayList<Paciente> pacientes) {
+        super(nombre, enfermedades, cantMaximaCamas, camasOcupadas, pacientes);
+        this.tipoSala = tipoSala;
+        this.companion = companion;
+        this.nombreDirector = nombreDirector;
     }
 
     public String getTipoSala() {

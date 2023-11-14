@@ -10,15 +10,17 @@ package models;
  *
  * @author Rachel
  */
-public class Incendio {
+public class Incendio extends PacienteGrave {
     private int gradoQuemaduras;
     private String lugarAfectado;
-    
-    public Incendio(int gradoQuemaduras, String lugarAfectado){
-        this.gradoQuemaduras=gradoQuemaduras;
-        this.lugarAfectado=lugarAfectado;
-    }
 
+    public Incendio(int gradoQuemaduras, String lugarAfectado, int tiempoEstimadoVida, String causa, String id, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
+        super(tiempoEstimadoVida, causa, id, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
+        this.gradoQuemaduras = gradoQuemaduras;
+        this.lugarAfectado = lugarAfectado;
+    }
+    
+   
     public int getGradoQuemaduras() {
         return gradoQuemaduras;
     }

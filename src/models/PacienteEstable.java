@@ -10,14 +10,17 @@ package models;
  *
  * @author Rachel
  */
-public class PacienteEstable {
+public class PacienteEstable extends Paciente{
     private int tiempoDetectadaEnfermedad;
     private String tratamientoPosible;
-    
-    public PacienteEstable(int tiempoDetectadaEnfermedad, String tratamientoPosible){
-        this.tiempoDetectadaEnfermedad=tiempoDetectadaEnfermedad;
-        this.tratamientoPosible=tratamientoPosible;
+
+    public PacienteEstable(int tiempoDetectadaEnfermedad, String tratamientoPosible, String id, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
+        super(id, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
+        this.tiempoDetectadaEnfermedad = tiempoDetectadaEnfermedad;
+        this.tratamientoPosible = tratamientoPosible;
     }
+    
+    
 
     public int getTiempoDetectadaEnfermedad() {
         return tiempoDetectadaEnfermedad;

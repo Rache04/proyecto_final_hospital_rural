@@ -10,13 +10,15 @@ package models;
  *
  * @author Rachel
  */
-public class Automovilistico {
+public class Automovilistico extends PacienteGrave {
     private boolean chofer;
-    
-    public Automovilistico(boolean chofer){
-        this.chofer=chofer;
-        
+
+    public Automovilistico(boolean chofer, int tiempoEstimadoVida, String causa, String id, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
+        super(tiempoEstimadoVida, causa, id, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
+        this.chofer = chofer;
     }
+    
+   
 
     public boolean isChofer() {
         return chofer;
