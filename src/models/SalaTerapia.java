@@ -17,8 +17,8 @@ public class SalaTerapia extends Sala{
    private boolean companion;
    private String nombreDirector;
 
-    public SalaTerapia(String tipoSala, boolean companion, String nombreDirector, String nombre, ArrayList<String> enfermedades, int cantMaximaCamas, int camasOcupadas, ArrayList<Paciente> pacientes) {
-        super(nombre, enfermedades, cantMaximaCamas, camasOcupadas, pacientes);
+    public SalaTerapia(String tipoSala, boolean companion, String nombreDirector, String nombre, ArrayList<String> enfermedades, int cantMaximaCamas, ArrayList<Paciente> pacientes) {
+        super(nombre, enfermedades, cantMaximaCamas, pacientes);
         this.tipoSala = tipoSala;
         this.companion = companion;
         this.nombreDirector = nombreDirector;

@@ -16,14 +16,12 @@ public class Sala {
     String nombre;
     ArrayList <String> enfermedades;
     int cantMaximaCamas;
-    int camasOcupadas;
     ArrayList<Paciente> pacientes;
     
-   public Sala(String nombre,ArrayList<String> enfermedades, int cantMaximaCamas, int camasOcupadas,  ArrayList<Paciente> pacientes){
+   public Sala(String nombre,ArrayList<String> enfermedades, int cantMaximaCamas,  ArrayList<Paciente> pacientes){
        this.nombre=nombre;
        this.enfermedades= enfermedades;
        this.cantMaximaCamas=cantMaximaCamas;
-       this.pacientes=pacientes;
        this.pacientes=pacientes;
       
    }
@@ -41,7 +39,7 @@ public class Sala {
     }
 
     public int getCamasOcupadas() {
-        return camasOcupadas;
+        return pacientes.size();
     }
 
     public ArrayList<Paciente> getPacientes() {
@@ -58,10 +56,6 @@ public class Sala {
 
     public void setCantMaximaCamas(int cantMaximaCamas) {
         this.cantMaximaCamas = cantMaximaCamas;
-    }
-
-    public void setCamasOcupadas(int camasOcupadas) {
-        this.camasOcupadas = camasOcupadas;
     }
 
     public void setPacientes(ArrayList<Paciente> pacientes) {
