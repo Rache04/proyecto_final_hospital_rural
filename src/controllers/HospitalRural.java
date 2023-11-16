@@ -47,13 +47,18 @@ public class HospitalRural implements IHospitalRural {
 
     @Override
     public boolean crearSala(Sala sala) {
-        // TODO Auto-generated method stub
-        return false;
+        return salas.add(sala);
     }
 
     @Override
     public boolean eliminarPaciente(String ciPaciente) {
-        // TODO Auto-generated method stub
+        for (Sala sala : salas) {
+            for (Paciente paciente : sala.getPacientes()) {
+                if(paciente.getCi().equals(ciPaciente)){
+                    return sala.getPacientes().remove(paciente);
+                }
+            }
+        }
         return false;
     }
 
