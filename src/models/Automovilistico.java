@@ -13,12 +13,12 @@ package models;
 public class Automovilistico extends PacienteGrave {
     private boolean chofer;
 
-    public Automovilistico(boolean chofer, int tiempoEstimadoVida, String causa, String ci, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
-        super(tiempoEstimadoVida, causa, ci, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
+    public Automovilistico(boolean chofer, int tiempoEstimadoVida, String causa, String ci, String nombreCompleto,
+            String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
+        super(tiempoEstimadoVida, causa, ci, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso,
+                tiempoEstimadoPermanencia);
         this.chofer = chofer;
     }
-    
-   
 
     public boolean isChofer() {
         return chofer;
@@ -27,5 +27,11 @@ public class Automovilistico extends PacienteGrave {
     public void setChofer(boolean chofer) {
         this.chofer = chofer;
     }
-    
+
+    @Override
+    public String conocerEstado() {
+        // TODO Auto-generated method stub
+        return "Accidente automovilistico " + getNivelGravedad();
+    }
+
 }

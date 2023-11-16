@@ -11,20 +11,21 @@ package models;
  * @author Rachel
  */
 public class Paciente {
-    private String ci;
-    private String nombreCompleto;
-    private String fechaNacimiento;
-    private String enfermedad;
-    private String fechaIngreso;
-    private int tiempoEstimadoPermanencia;
-    
-    public Paciente(String ci,  String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia){
-        this.ci=ci;
-        this.nombreCompleto=nombreCompleto;
-        this.fechaNacimiento=fechaNacimiento;
-        this.enfermedad=enfermedad;
-        this.fechaIngreso=fechaIngreso;
-        this.tiempoEstimadoPermanencia=tiempoEstimadoPermanencia;
+    protected String ci;
+    protected String nombreCompleto;
+    protected String fechaNacimiento;
+    protected String enfermedad;
+    protected String fechaIngreso;
+    protected int tiempoEstimadoPermanencia;
+
+    public Paciente(String ci, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso,
+            int tiempoEstimadoPermanencia) {
+        this.ci = ci;
+        this.nombreCompleto = nombreCompleto;
+        this.fechaNacimiento = fechaNacimiento;
+        this.enfermedad = enfermedad;
+        this.fechaIngreso = fechaIngreso;
+        this.tiempoEstimadoPermanencia = tiempoEstimadoPermanencia;
     }
 
     public String getCi() {
@@ -74,6 +75,9 @@ public class Paciente {
     public void setTiempoEstimadoPermanencia(int tiempoEstimadoPermanencia) {
         this.tiempoEstimadoPermanencia = tiempoEstimadoPermanencia;
     }
-    
-    
+
+    public String conocerEstado() {
+        return "";
+    }
+
 }

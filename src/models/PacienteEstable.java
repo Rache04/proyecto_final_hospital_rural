@@ -10,17 +10,16 @@ package models;
  *
  * @author Rachel
  */
-public class PacienteEstable extends Paciente{
+public class PacienteEstable extends Paciente {
     private int tiempoDetectadaEnfermedad;
     private String tratamientoPosible;
 
-    public PacienteEstable(int tiempoDetectadaEnfermedad, String tratamientoPosible, String ci, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
+    public PacienteEstable(int tiempoDetectadaEnfermedad, String tratamientoPosible, String ci, String nombreCompleto,
+            String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
         super(ci, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
         this.tiempoDetectadaEnfermedad = tiempoDetectadaEnfermedad;
         this.tratamientoPosible = tratamientoPosible;
     }
-    
-    
 
     public int getTiempoDetectadaEnfermedad() {
         return tiempoDetectadaEnfermedad;
@@ -37,5 +36,18 @@ public class PacienteEstable extends Paciente{
     public void setTratamientoPosible(String tratamientoPosible) {
         this.tratamientoPosible = tratamientoPosible;
     }
-    
+
+    @Override
+    public String conocerEstado() {
+        // TODO Auto-generated method stub
+        if (tiempoEstimadoPermanencia > 30) {
+            return "Cuidado permanente";
+        } else if (tiempoEstimadoPermanencia >= 10) {
+            return "Cuidado moderado";
+        } else {
+            return "Poco cuidado";
+        }
+
+    }
+
 }

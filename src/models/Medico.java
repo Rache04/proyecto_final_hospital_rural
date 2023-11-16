@@ -13,16 +13,16 @@ import java.util.ArrayList;
  * @author Rachel
  */
 public class Medico {
-   private String nombre;
-   private String ci;
-   private ArrayList<String> especialidades;
-   private ArrayList<Sala> salas;
-    
-    public Medico(String nombre, String ci, ArrayList<String> especialidades, ArrayList<Sala> salas){
-        this.nombre=nombre;
-        this.ci=ci;
-        this.especialidades=especialidades;
-        this.salas=salas;
+    private String nombre;
+    private String ci;
+    private ArrayList<String> especialidades;
+    private ArrayList<Sala> salas;
+
+    public Medico(String nombre, String ci, ArrayList<String> especialidades, ArrayList<Sala> salas) {
+        this.nombre = nombre;
+        this.ci = ci;
+        this.especialidades = especialidades;
+        this.salas = salas;
     }
 
     public String getNombre() {
@@ -56,6 +56,5 @@ public class Medico {
     public void setSalas(ArrayList<Sala> salas) {
         this.salas = salas;
     }
-    
-    
+
 }

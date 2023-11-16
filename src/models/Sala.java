@@ -14,17 +14,17 @@ import java.util.ArrayList;
  */
 public class Sala {
     String nombre;
-    ArrayList <String> enfermedades;
+    ArrayList<String> enfermedades;
     int cantMaximaCamas;
     ArrayList<Paciente> pacientes;
-    
-   public Sala(String nombre,ArrayList<String> enfermedades, int cantMaximaCamas,  ArrayList<Paciente> pacientes){
-       this.nombre=nombre;
-       this.enfermedades= enfermedades;
-       this.cantMaximaCamas=cantMaximaCamas;
-       this.pacientes=pacientes;
-      
-   }
+
+    public Sala(String nombre, ArrayList<String> enfermedades, int cantMaximaCamas, ArrayList<Paciente> pacientes) {
+        this.nombre = nombre;
+        this.enfermedades = enfermedades;
+        this.cantMaximaCamas = cantMaximaCamas;
+        this.pacientes = pacientes;
+
+    }
 
     public String getNombre() {
         return nombre;
@@ -61,5 +61,5 @@ public class Sala {
     public void setPacientes(ArrayList<Paciente> pacientes) {
         this.pacientes = pacientes;
     }
-   
+
 }

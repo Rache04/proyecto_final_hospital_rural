@@ -12,12 +12,13 @@ import java.util.ArrayList;
  *
  * @author Rachel
  */
-public class SalaTerapia extends Sala{
-   private String tipoSala;
-   private boolean companion;
-   private String nombreDirector;
+public class SalaTerapia extends Sala {
+    private String tipoSala;
+    private boolean companion;
+    private String nombreDirector;
 
-    public SalaTerapia(String tipoSala, boolean companion, String nombreDirector, String nombre, ArrayList<String> enfermedades, int cantMaximaCamas, ArrayList<Paciente> pacientes) {
+    public SalaTerapia(String tipoSala, boolean companion, String nombreDirector, String nombre,
+            ArrayList<String> enfermedades, int cantMaximaCamas, ArrayList<Paciente> pacientes) {
         super(nombre, enfermedades, cantMaximaCamas, pacientes);
         this.tipoSala = tipoSala;
         this.companion = companion;
@@ -47,7 +48,5 @@ public class SalaTerapia extends Sala{
     public void setNombreDirector(String nombreDirector) {
         this.nombreDirector = nombreDirector;
     }
-    
-    
-    
+
 }

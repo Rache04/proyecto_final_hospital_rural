@@ -10,13 +10,16 @@ package models;
  *
  * @author Rachel
  */
-public class Asfixia extends PacienteGrave{
+public class Asfixia extends PacienteGrave {
     private String causa;
     private String nombreSustancia;
     private boolean faltaOxigeno;
 
-    public Asfixia( String nombreSustancia, boolean faltaOxigeno, int tiempoEstimadoVida, String causa, String ci, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
-        super(tiempoEstimadoVida, causa, ci, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
+    public Asfixia(String nombreSustancia, boolean faltaOxigeno, int tiempoEstimadoVida, String causa, String ci,
+            String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso,
+            int tiempoEstimadoPermanencia) {
+        super(tiempoEstimadoVida, causa, ci, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso,
+                tiempoEstimadoPermanencia);
         this.causa = causa;
         this.nombreSustancia = nombreSustancia;
         this.faltaOxigeno = faltaOxigeno;
@@ -45,6 +48,15 @@ public class Asfixia extends PacienteGrave{
     public void setFaltaOxigeno(boolean faltaOxigeno) {
         this.faltaOxigeno = faltaOxigeno;
     }
-    
-    
+
+    @Override
+    public String conocerEstado() {
+        // TODO Auto-generated method stub
+        if (isFaltaOxigeno()) {
+            return "Asfixia por falta de oxigeno " + getNivelGravedad();
+        } else {
+            return "Asfixia por aspirar " + nombreSustancia + " " + getNivelGravedad();
+        }
+    }
+
 }

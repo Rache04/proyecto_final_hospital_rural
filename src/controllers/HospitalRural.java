@@ -54,7 +54,7 @@ public class HospitalRural implements IHospitalRural {
     public boolean eliminarPaciente(String ciPaciente) {
         for (Sala sala : salas) {
             for (Paciente paciente : sala.getPacientes()) {
-                if(paciente.getCi().equals(ciPaciente)){
+                if (paciente.getCi().equals(ciPaciente)) {
                     return sala.getPacientes().remove(paciente);
                 }
             }
