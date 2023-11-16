@@ -16,9 +16,9 @@ public class Medico {
    private String nombre;
    private String ci;
    private ArrayList<String> especialidades;
-   private ArrayList<String> salas;
+   private ArrayList<Sala> salas;
     
-    public Medico(String nombre, String ci, ArrayList<String> especialidades, ArrayList<String> salas){
+    public Medico(String nombre, String ci, ArrayList<String> especialidades, ArrayList<Sala> salas){
         this.nombre=nombre;
         this.ci=ci;
         this.especialidades=especialidades;
@@ -37,7 +37,7 @@ public class Medico {
         return especialidades;
     }
 
-    public ArrayList<String> getSalas() {
+    public ArrayList<Sala> getSalas() {
         return salas;
     }
 
@@ -53,7 +53,7 @@ public class Medico {
         this.especialidades = especialidades;
     }
 
-    public void setSalas(ArrayList<String> salas) {
+    public void setSalas(ArrayList<Sala> salas) {
         this.salas = salas;
     }
     
