@@ -11,15 +11,15 @@ package models;
  * @author Rachel
  */
 public class Paciente {
-    private String id;
+    private String ci;
     private String nombreCompleto;
     private String fechaNacimiento;
     private String enfermedad;
     private String fechaIngreso;
     private int tiempoEstimadoPermanencia;
     
-    public Paciente(String id,  String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia){
-        this.id=id;
+    public Paciente(String ci,  String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia){
+        this.ci=ci;
         this.nombreCompleto=nombreCompleto;
         this.fechaNacimiento=fechaNacimiento;
         this.enfermedad=enfermedad;
@@ -27,8 +27,8 @@ public class Paciente {
         this.tiempoEstimadoPermanencia=tiempoEstimadoPermanencia;
     }
 
-    public String getId() {
-        return id;
+    public String getCi() {
+        return ci;
     }
 
     public String getNombreCompleto() {
@@ -51,8 +51,8 @@ public class Paciente {
         return tiempoEstimadoPermanencia;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCi(String ci) {
+        this.ci = ci;
     }
 
     public void setNombreCompleto(String nombreCompleto) {

@@ -15,16 +15,12 @@ public class Asfixia extends PacienteGrave{
     private String nombreSustancia;
     private boolean faltaOxigeno;
 
-    public Asfixia( String nombreSustancia, boolean faltaOxigeno, int tiempoEstimadoVida, String causa, String id, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
-        super(tiempoEstimadoVida, causa, id, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
+    public Asfixia( String nombreSustancia, boolean faltaOxigeno, int tiempoEstimadoVida, String causa, String ci, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
+        super(tiempoEstimadoVida, causa, ci, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
         this.causa = causa;
         this.nombreSustancia = nombreSustancia;
         this.faltaOxigeno = faltaOxigeno;
     }
-
-   
-    
-    
 
     public String getCausa() {
         return causa;

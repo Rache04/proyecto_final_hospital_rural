@@ -14,8 +14,8 @@ public class Envenenamiento extends PacienteGrave {
     private String nombreSustancia;
     private boolean intencionado;
 
-    public Envenenamiento(String nombreSustancia, boolean intencionado, int tiempoEstimadoVida, String causa, String id, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
-        super(tiempoEstimadoVida, causa, id, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
+    public Envenenamiento(String nombreSustancia, boolean intencionado, int tiempoEstimadoVida, String causa, String ci, String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {
+        super(tiempoEstimadoVida, causa, ci, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso, tiempoEstimadoPermanencia);
         this.nombreSustancia = nombreSustancia;
         this.intencionado = intencionado;
     }
