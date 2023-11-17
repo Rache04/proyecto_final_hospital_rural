@@ -17,13 +17,17 @@ public interface IHospitalRural {
 
     boolean eliminarPaciente(String ciPaciente);
 
+    boolean addMedico(Medico medico);
+
+    boolean eliminarMedico(String ciMedico);
+
     boolean pacienteEstaIngr(String ciPaciente);
 
     boolean pacienteAtendMedico(String ciPaciente, String ciMedico);
 
     int cantPacientesGraves();
 
-    void trasladarPaciente(String ciPaciente, String nombreSala);
+    boolean trasladarPaciente(String ciPaciente, String nombreSala);
 
     String conocerEstadoPaciente(String ciPaciente);
 
