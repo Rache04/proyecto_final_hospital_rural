@@ -42,7 +42,7 @@ public class Envenenamiento extends PacienteGrave {
     @Override
     public String conocerEstado() {
         // TODO Auto-generated method stub
-        return "Ingestion de " + nombreSustancia + " " + getNivelGravedad();
+        return "Ingestiòn de " + nombreSustancia + " " + getNivelGravedad();
     }
 
 }

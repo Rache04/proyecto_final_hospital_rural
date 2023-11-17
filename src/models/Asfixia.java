@@ -11,22 +11,22 @@ package models;
  * @author Rachel
  */
 public class Asfixia extends PacienteGrave {
-    private String causa;
+    private boolean sustanciaToxica;
     private String nombreSustancia;
     private boolean faltaOxigeno;
 
-    public Asfixia(String nombreSustancia, boolean faltaOxigeno, int tiempoEstimadoVida, String causa, String ci,
+    public Asfixia(String nombreSustancia, boolean faltaOxigeno, int tiempoEstimadoVida, boolean sustanciaToxica, String ci,
             String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso,
-            int tiempoEstimadoPermanencia) {
+            int tiempoEstimadoPermanencia, String causa) {
         super(tiempoEstimadoVida, causa, ci, nombreCompleto, fechaNacimiento, enfermedad, fechaIngreso,
                 tiempoEstimadoPermanencia);
-        this.causa = causa;
+        this.sustanciaToxica = sustanciaToxica;
         this.nombreSustancia = nombreSustancia;
         this.faltaOxigeno = faltaOxigeno;
     }
 
-    public String getCausa() {
-        return causa;
+    public boolean getSustanciaToxica() {
+        return sustanciaToxica;
     }
 
     public String getNombreSustancia() {
@@ -37,8 +37,8 @@ public class Asfixia extends PacienteGrave {
         return faltaOxigeno;
     }
 
-    public void setCausa(String causa) {
-        this.causa = causa;
+    public void setSustanciaToxica(boolean sustanciaToxica) {
+        this.sustanciaToxica = sustanciaToxica;
     }
 
     public void setNombreSustancia(String nombreSustancia) {
@@ -53,7 +53,7 @@ public class Asfixia extends PacienteGrave {
     public String conocerEstado() {
         // TODO Auto-generated method stub
         if (isFaltaOxigeno()) {
-            return "Asfixia por falta de oxigeno " + getNivelGravedad();
+            return "Asfixia por falta de oxìgeno " + getNivelGravedad();
         } else {
             return "Asfixia por aspirar " + nombreSustancia + " " + getNivelGravedad();
         }

@@ -31,7 +31,7 @@ public class Automovilistico extends PacienteGrave {
     @Override
     public String conocerEstado() {
         // TODO Auto-generated method stub
-        return "Accidente automovilistico " + getNivelGravedad();
+        return "Accidente automovilìstico " + getNivelGravedad();
     }
 
 }
