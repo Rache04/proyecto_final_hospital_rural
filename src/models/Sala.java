@@ -62,4 +62,12 @@ public class Sala {
         this.pacientes = pacientes;
     }
 
+    @Override
+    public String toString() {
+        return "Sala [nombre=" + nombre + ", enfermedades=" + enfermedades + ", cantMaximaCamas=" + cantMaximaCamas
+                + ", pacientes=" + pacientes + "]";
+    }
+
+    
+
 }

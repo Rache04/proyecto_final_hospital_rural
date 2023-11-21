@@ -41,7 +41,7 @@ public class PacienteGrave extends Paciente {
     public String conocerEstado() {
         // TODO Auto-generated method stub
 
-        return "Causa: Enfermedad terminal";
+        return "Causa: Enfermedad terminal " + getNivelGravedad() ;
     }
 
     protected String getNivelGravedad() {

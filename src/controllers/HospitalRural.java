@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import interfaces.IHospitalRural;
 import models.Medico;
 import models.Paciente;
-import models.PacienteGrave;
 import models.Sala;
 import models.SalaTerapia;
 
@@ -48,6 +47,17 @@ public class HospitalRural implements IHospitalRural {
             }
         }
         return false;
+    }
+
+    @Override
+    public boolean addEnfermedadSala(String enfermedad, Sala sala) {
+        return sala.getEnfermedades().add(enfermedad);
+    }
+
+    @Override
+    public boolean eliminarEnfermedadSala(String enfermedad, Sala sala) {
+        return sala.getEnfermedades().remove(enfermedad);
+
     }
 
     @Override
@@ -147,12 +157,13 @@ public class HospitalRural implements IHospitalRural {
         Sala salaObj = getSalaPorNombre(nombreSala);
         if (salaObj != null) {
             for (Sala sala : salas) {
-                for (Paciente paciente : sala.getPacientes()) {
-                    if (paciente.getCi().equals(ciPaciente)) {
-                        salaObj.getPacientes().add(paciente);
-                        sala.getPacientes().remove(paciente);
+                for (int i = 0; i < sala.getPacientes().size(); i++) {
+                    if (sala.getPacientes().get(i).getCi().equals(ciPaciente)) {
+                        salaObj.getPacientes().add(sala.getPacientes().get(i));
+                        sala.getPacientes().remove(sala.getPacientes().get(i));
                     }
                 }
+                
             }
         }
 

@@ -80,4 +80,12 @@ public class Paciente {
         return "";
     }
 
+    @Override
+    public String toString() {
+        return "Paciente [ci=" + ci + ", nombreCompleto=" + nombreCompleto + ", fechaNacimiento=" + fechaNacimiento
+                + ", enfermedad=" + enfermedad + ", fechaIngreso=" + fechaIngreso + ", tiempoEstimadoPermanencia="
+                + tiempoEstimadoPermanencia + "]";
+    }
+
+    
 }

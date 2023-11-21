@@ -57,4 +57,12 @@ public class Medico {
         this.salas = salas;
     }
 
+    @Override
+    public String toString() {
+        return "Medico [nombre=" + nombre + ", ci=" + ci + ", especialidades=" + especialidades + ", salas=" + salas
+                + "]";
+    }
+
+    
+
 }
