@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import models.Medico;
-import models.Paciente;
 import models.Sala;
 import models.SalaTerapia;
 

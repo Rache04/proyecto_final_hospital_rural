@@ -4,6 +4,7 @@ package Vistas;
 import controllers.HospitalRural;
 import interfaces.IHospitalRural;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import models.Medico;
 import models.Sala;
 
@@ -76,7 +77,7 @@ public class Principal extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(640, 896));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setBackground(new java.awt.Color(55, 55, 55));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -93,7 +94,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 580, 320));
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 580, 10));
 
-        jPanel2.setBackground(new java.awt.Color(0, 39, 78));
+        jPanel2.setBackground(new java.awt.Color(55, 55, 55));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -170,7 +171,7 @@ public class Principal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 384, 580, 180));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/darkblue.jpg"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/negro formulario.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 580));
 
         jMenu3.setText("Registros");
@@ -226,7 +227,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        if (this.hospital.getSalas().size() > 0) {
+            AdicionarPaciente paciente = new AdicionarPaciente(this, rootPaneCheckingEnabled, (HospitalRural) hospital);
+            paciente.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay registradas Salas médicas en el sistema");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

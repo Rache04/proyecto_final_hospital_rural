@@ -1,17 +1,42 @@
 package Vistas;
 
+import controllers.HospitalRural;
+import interfaces.IHospitalRural;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.HashSet;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import models.Sala;
 
 public class AdicionarPaciente extends javax.swing.JDialog {
 
-    public AdicionarPaciente(java.awt.Frame parent, boolean modal) {
+    private IHospitalRural hospital;
+    private ArrayList<String> listEnfermedades = new ArrayList<String>();
+    private DefaultTableModel model = new DefaultTableModel();
+
+    public AdicionarPaciente(java.awt.Frame parent, boolean modal, HospitalRural hospital) {
         super(parent, modal);
         initComponents();
+        this.hospital = hospital;
         setResizable(false);
         setSize(875, 600);
         setLocationRelativeTo(null);
         setTitle("Agregar Paciente");
+
+        HashSet<String> superConjuntoEnfermedades = new HashSet<>();
+        for (Sala aux : this.hospital.getSalas()) {
+            superConjuntoEnfermedades.addAll(aux.getEnfermedades());
+        }
+
+        listEnfermedades.addAll(superConjuntoEnfermedades);
+
+        for (String aux : listEnfermedades) {
+            jComboBox_Enfermedad.addItem(aux);
+        }
 
         jRadioButton_PacienteEstable.setSelected(true);
         jRadioButton_SustanciaToxica_SI.setSelected(true);
@@ -25,6 +50,22 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         } else {
             jPanel_PacienteGrave.setVisible(true);
         }
+
+        
+        model.addColumn("Nombre");
+        model.addColumn("Cantidad de Camas");
+        model.addColumn("Camas Disponibles");
+        jTable_Salas.setModel(model);
+//        String[] datos = new String[1];
+//
+//                datos[0] = txt_Enfermedad.getText();
+//                this.model.addRow(datos);
+//                txt_Enfermedad.setText("");
+//                txt_Enfermedad.setBackground(Color.white);
+//                txt_Enfermedad.setText("");
+            
+        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -84,17 +125,19 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        jComboBox_Enfermedad = new javax.swing.JComboBox();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel_Seleccion_Tabla.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Seleccion_Tabla.setForeground(new java.awt.Color(255, 255, 255));
         jLabel_Seleccion_Tabla.setText("Selecione una sala para ingresar al paciente:");
         getContentPane().add(jLabel_Seleccion_Tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 830, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Salas disponibles");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, 180, -1));
 
@@ -385,8 +428,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jLabel13.setText("Registrar Paciente");
         getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 180, -1));
 
-        jButton_AddEnfermedad.setBackground(new java.awt.Color(51, 204, 0));
-        jButton_AddEnfermedad.setForeground(new java.awt.Color(255, 255, 255));
         jButton_AddEnfermedad.setText("Agregar Paciente");
         jButton_AddEnfermedad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -411,12 +452,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jLabel4.setText("Enfermedad:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 110, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 260, -1));
+        jPanel1.add(jComboBox_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 260, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 830, 90));
 
-        jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/wallpaper.jpg"))); // NOI18N
+        jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/negro formulario.jpg"))); // NOI18N
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 870, 590));
 
         pack();
@@ -599,14 +639,14 @@ public class AdicionarPaciente extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_SustanciaIngerida_AsfixiaKeyTyped
 
     private void txt_GradoQuemaduraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_GradoQuemaduraKeyTyped
-       char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_GradoQuemaduraKeyTyped
 
     private void txt_LugarAfectadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_LugarAfectadoKeyTyped
-       char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if (!Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
@@ -642,7 +682,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AdicionarPaciente dialog = new AdicionarPaciente(new javax.swing.JFrame(), true);
+                AdicionarPaciente dialog = new AdicionarPaciente(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -662,7 +702,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup_Asfixia_SustanciaToxica;
     private javax.swing.ButtonGroup buttonGroup_Envenenado;
     private javax.swing.JButton jButton_AddEnfermedad;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox_Enfermedad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
