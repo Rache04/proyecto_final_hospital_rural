@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import controllers.HospitalRural;
@@ -7,20 +6,40 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import models.Medico;
 import models.Sala;
-
+import models.SalaTerapia;
 
 public class Principal extends javax.swing.JFrame {
 
-    
     private IHospitalRural hospital;
-    
-    
+
     public Principal() {
         this.hospital = new HospitalRural(new ArrayList<Medico>(), new ArrayList<Sala>());
         initComponents();
         setResizable(false);
         setSize(625, 630);
         setLocationRelativeTo(null);
+        
+        ArrayList<String> enfermedades = new ArrayList<>();
+        enfermedades.add("Catarro");
+        enfermedades.add("Gripe");
+        enfermedades.add("Cida");
+        enfermedades.add("Gangrena");
+        ArrayList<String> enfermedades1 = new ArrayList<>();
+        enfermedades1.add("Fiebre");
+        enfermedades1.add("AcidoXD");
+        enfermedades1.add("Loco");
+        enfermedades1.add("Catarro");
+        
+        Sala s1 = new Sala("Quemado", enfermedades, 15, null);
+        Sala s2 = new Sala("Operaciones", enfermedades1, 10, null);
+        Sala s3 = new SalaTerapia("Intenciva", true, "Juan Alverto", "Extrangería", enfermedades, 23, null);
+        Sala s4 = new Sala("Emergencias", enfermedades1, 400, null);
+        Sala s5 = new SalaTerapia("Intenciva", true, "ElPEPE", "MorgeXD", enfermedades1, 80, null);
+        this.hospital.crearSala(s1);
+        this.hospital.crearSala(s2);
+        this.hospital.crearSala(s3);
+        this.hospital.crearSala(s4);
+        this.hospital.crearSala(s5);
     }
 
     /**
@@ -212,8 +231,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-      AdicionarMedico medico = new AdicionarMedico(this, rootPaneCheckingEnabled);
-      medico.setVisible(true);
+        AdicionarMedico medico = new AdicionarMedico(this, rootPaneCheckingEnabled);
+        medico.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -227,12 +246,28 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        boolean flap1 = false;
+        boolean flap2 = false;
         if (this.hospital.getSalas().size() > 0) {
+            flap1 = true;
+        }
+        for (Sala aux : this.hospital.getSalas()) {
+            if (aux.getPacientes() != null) {
+                if (aux.getCantMaximaCamas() > aux.getCamasOcupadas()) {
+                    flap2 = true;
+                }
+            }else{
+                flap2 = true;
+            }
+        }
+
+        if (flap1 && flap2) {
             AdicionarPaciente paciente = new AdicionarPaciente(this, rootPaneCheckingEnabled, (HospitalRural) hospital);
             paciente.setVisible(true);
-        }else{
-            JOptionPane.showMessageDialog(null, "No hay registradas Salas médicas en el sistema");
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay ninguna sala médica disponible");
         }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -266,7 +301,7 @@ public class Principal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Principal view = new Principal();
-                view.setVisible(true); 
+                view.setVisible(true);
                 view.setTitle("Hospital");
             }
         });

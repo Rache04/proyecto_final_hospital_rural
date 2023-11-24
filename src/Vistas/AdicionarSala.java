@@ -430,24 +430,15 @@ public class AdicionarSala extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButton_SalaTerapia_NoActionPerformed
 
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+
     }//GEN-LAST:event_txt_NombreKeyTyped
 
     private void txt_NombreDirectorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreDirectorKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isLetter(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+
     }//GEN-LAST:event_txt_NombreDirectorKeyTyped
 
     private void txt_CantidadCamasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_CantidadCamasKeyTyped
-        char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
-            evt.consume();
-        }
+
     }//GEN-LAST:event_txt_CantidadCamasKeyTyped
 
     private void txt_EnfermedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_EnfermedadKeyTyped
