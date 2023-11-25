@@ -115,6 +115,11 @@ public class AdicionarSala extends javax.swing.JDialog {
                 jButton_AddEnfermedadActionPerformed(evt);
             }
         });
+        jButton_AddEnfermedad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jButton_AddEnfermedadKeyTyped(evt);
+            }
+        });
         getContentPane().add(jButton_AddEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 150, 25));
 
         jTable_Enfermedades.setBackground(new java.awt.Color(51, 51, 51));
@@ -447,6 +452,10 @@ public class AdicionarSala extends javax.swing.JDialog {
             evt.consume();
         }
     }//GEN-LAST:event_txt_EnfermedadKeyTyped
+
+    private void jButton_AddEnfermedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton_AddEnfermedadKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton_AddEnfermedadKeyTyped
 
     /**
      * @param args the command line arguments

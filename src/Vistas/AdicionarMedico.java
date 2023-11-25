@@ -3,6 +3,7 @@ package Vistas;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -10,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class AdicionarMedico extends javax.swing.JDialog {
     
+    private ArrayList<String> especialidades = new ArrayList<>();
     DefaultTableModel modelo = new DefaultTableModel();
 
     public AdicionarMedico(java.awt.Frame parent, boolean modal) {
@@ -291,14 +293,22 @@ public class AdicionarMedico extends javax.swing.JDialog {
     private void addEspcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEspcActionPerformed
         // TODO add your handling code here:
          String[] Espc = new String[1];
-         if (!TextEspc.getText().trim().isEmpty() && TextEspc.getText().matches("^(?i)[a-z]+$")){
-         Espc[0] = TextEspc.getText();
+         if (!TextEspc.getText().equals("")) {
+         if (TextEspc.getText().matches("^(?i)[a-z]+$")){
+             if (!especialidades.contains(TextEspc.getText())) {
+                    this.especialidades.add(TextEspc.getText());
+             Espc[0] = TextEspc.getText();
          this.modelo.addRow(Espc);
          TextEspc.setText("");
+         TextEspc.setBackground(Color.white);
+         }else{
+             TextEspc.setText("Especialidad ya existe");
+             TextEspc.setBackground(Color.red);
+                }
         }else{
              JOptionPane.showMessageDialog(null, "Verifique la especialidad");
-         }
-         
+            }
+       }    
     }//GEN-LAST:event_addEspcActionPerformed
 
     private void ElimEspcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElimEspcActionPerformed
