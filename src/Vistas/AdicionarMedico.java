@@ -3,6 +3,7 @@ package Vistas;
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -114,10 +115,25 @@ public class AdicionarMedico extends javax.swing.JDialog {
         });
 
         TextNombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        TextNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TextNombreKeyTyped(evt);
+            }
+        });
 
         TextNI.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        TextNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TextNIKeyTyped(evt);
+            }
+        });
 
         TextEspc.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        TextEspc.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TextEspcKeyTyped(evt);
+            }
+        });
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nombre del médico:");
@@ -329,6 +345,37 @@ public class AdicionarMedico extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void TextNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNIKeyTyped
+        // TODO add your handling code here:
+        char ni = evt.getKeyChar();
+        if (!Character.isDigit(ni)
+                || (ni == KeyEvent.VK_BACK_SPACE)
+                || (ni == KeyEvent.VK_DELETE)
+                || TextNI.getText().length() >= 11) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TextNIKeyTyped
+
+    private void TextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyTyped
+        // TODO add your handling code here:
+        char no = evt.getKeyChar();
+        if (!Character.isLetter(no)
+                || (no == KeyEvent.VK_BACK_SPACE)
+                || (no == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TextNombreKeyTyped
+
+    private void TextEspcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextEspcKeyTyped
+        // TODO add your handling code here:
+        char es = evt.getKeyChar();
+        if (!Character.isLetter(es)
+                || (es == KeyEvent.VK_BACK_SPACE)
+                || (es == KeyEvent.VK_DELETE)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TextEspcKeyTyped
 
     /**
      * @param args the command line arguments
