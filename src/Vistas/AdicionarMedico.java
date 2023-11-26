@@ -129,6 +129,11 @@ public class AdicionarMedico extends javax.swing.JDialog {
         });
 
         TextEspc.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        TextEspc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextEspcActionPerformed(evt);
+            }
+        });
         TextEspc.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 TextEspcKeyTyped(evt);
@@ -310,7 +315,6 @@ public class AdicionarMedico extends javax.swing.JDialog {
         // TODO add your handling code here:
          String[] Espc = new String[1];
          if (!TextEspc.getText().equals("")) {
-         if (TextEspc.getText().matches("^(?i)[a-z]+$")){
              if (!especialidades.contains(TextEspc.getText())) {
                     this.especialidades.add(TextEspc.getText());
              Espc[0] = TextEspc.getText();
@@ -320,11 +324,8 @@ public class AdicionarMedico extends javax.swing.JDialog {
          }else{
              TextEspc.setText("Especialidad ya existe");
              TextEspc.setBackground(Color.red);
-                }
-        }else{
-             JOptionPane.showMessageDialog(null, "Verifique la especialidad");
             }
-       }    
+        }    
     }//GEN-LAST:event_addEspcActionPerformed
 
     private void ElimEspcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElimEspcActionPerformed
@@ -360,7 +361,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
     private void TextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyTyped
         // TODO add your handling code here:
         char no = evt.getKeyChar();
-        if (!Character.isLetter(no)
+        if (Character.isDigit(no)
                 || (no == KeyEvent.VK_BACK_SPACE)
                 || (no == KeyEvent.VK_DELETE)) {
             evt.consume();
@@ -370,12 +371,16 @@ public class AdicionarMedico extends javax.swing.JDialog {
     private void TextEspcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextEspcKeyTyped
         // TODO add your handling code here:
         char es = evt.getKeyChar();
-        if (!Character.isLetter(es)
+        if (Character.isDigit(es)
                 || (es == KeyEvent.VK_BACK_SPACE)
                 || (es == KeyEvent.VK_DELETE)) {
             evt.consume();
         }
     }//GEN-LAST:event_TextEspcKeyTyped
+
+    private void TextEspcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextEspcActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextEspcActionPerformed
 
     /**
      * @param args the command line arguments

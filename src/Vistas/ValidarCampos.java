@@ -3,7 +3,7 @@ package Vistas;
 
 public class ValidarCampos {
     public static boolean comprobarCamposTexto(String a){
-        if (a.matches("^(?i)[a-záéíóúñÁÉÍÓÚ]+$")) {
+        if (a.matches("^(?i)[a-záéíóúñÁÉÍÓÚ\\s]+$")) {
             return true;
         }else{
             return false;
