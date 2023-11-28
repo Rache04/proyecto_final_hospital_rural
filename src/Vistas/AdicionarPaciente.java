@@ -202,7 +202,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         buttonGroup3 = new javax.swing.ButtonGroup();
         jLabel_Seleccion_Tabla = new javax.swing.JLabel();
         txt_Nombre = new javax.swing.JTextField();
-        txt_CarnetiIdentidad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Salas = new javax.swing.JTable();
         jPanel_PacienteGrave = new javax.swing.JPanel();
@@ -238,7 +237,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jPanel7 = new javax.swing.JPanel();
         jRadioButton_Asfixia = new javax.swing.JRadioButton();
         jRadioButton_Incendio = new javax.swing.JRadioButton();
-        jLabel13 = new javax.swing.JLabel();
         jButton_AddEnfermedad = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -264,6 +262,8 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jRadioButton_Accidente = new javax.swing.JRadioButton();
         jRadioButton_PacienteEstable = new javax.swing.JRadioButton();
         jRadioButton_PacienteGrave = new javax.swing.JRadioButton();
+        txt_CarnetiIdentidad = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -286,21 +286,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NombreKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 220, 20));
-
-        txt_CarnetiIdentidad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_CarnetiIdentidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_CarnetiIdentidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_CarnetiIdentidadActionPerformed(evt);
-            }
-        });
-        txt_CarnetiIdentidad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_CarnetiIdentidadKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_CarnetiIdentidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 220, 20));
+        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 200, 20));
 
         jTable_Salas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable_Salas.setModel(new javax.swing.table.DefaultTableModel(
@@ -539,10 +525,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
         getContentPane().add(jPanel_PacienteGrave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 450, 340));
 
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel13.setText("Registrar Paciente");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 180, -1));
-
         jButton_AddEnfermedad.setText("Agregar Paciente");
         jButton_AddEnfermedad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -664,8 +646,8 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 130, -1));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("Tiemo de Permenencia:");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 150, -1));
+        jLabel20.setText("Tiempo de Permenencia:");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 160, -1));
 
         txt_TiempoEstimadoPermanencia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_TiempoEstimadoPermanencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -679,7 +661,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_TiempoEstimadoPermanenciaKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_TiempoEstimadoPermanencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 30, 20));
+        jPanel1.add(txt_TiempoEstimadoPermanencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 30, 20));
 
         txt_TiempoEstimadoVida.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_TiempoEstimadoVida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -734,6 +716,24 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             }
         });
         jPanel1.add(jRadioButton_PacienteGrave, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, -1));
+
+        txt_CarnetiIdentidad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_CarnetiIdentidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_CarnetiIdentidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_CarnetiIdentidadActionPerformed(evt);
+            }
+        });
+        txt_CarnetiIdentidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_CarnetiIdentidadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_CarnetiIdentidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 200, 20));
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel13.setText("Registrar Paciente");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 180, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 670, 190));
 
