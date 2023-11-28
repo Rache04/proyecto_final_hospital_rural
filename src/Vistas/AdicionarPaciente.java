@@ -32,7 +32,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         initComponents();
         this.hospital = hospital;
         setResizable(false);
-        setSize(871, 685);
+        setSize(700, 800);
         setLocationRelativeTo(null);
         setTitle("Agregar Paciente");
 
@@ -201,20 +201,14 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         buttonGroup_Accidente_Conductor = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
         jLabel_Seleccion_Tabla = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         txt_Nombre = new javax.swing.JTextField();
         txt_CarnetiIdentidad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Salas = new javax.swing.JTable();
-        jRadioButton_PacienteEstable = new javax.swing.JRadioButton();
-        jRadioButton_PacienteGrave = new javax.swing.JRadioButton();
         jPanel_PacienteGrave = new javax.swing.JPanel();
         jRadioButton_Automovilistico = new javax.swing.JRadioButton();
         jRadioButton_Envenenado = new javax.swing.JRadioButton();
-        jRadioButton_Incendio = new javax.swing.JRadioButton();
-        jRadioButton_Asfixia = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel_Accidente = new javax.swing.JPanel();
@@ -241,6 +235,9 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jRadioButton_FaltaOxigeno_SI = new javax.swing.JRadioButton();
         jRadioButton_FaltaOxigeno_NO = new javax.swing.JRadioButton();
+        jPanel7 = new javax.swing.JPanel();
+        jRadioButton_Asfixia = new javax.swing.JRadioButton();
+        jRadioButton_Incendio = new javax.swing.JRadioButton();
         jLabel13 = new javax.swing.JLabel();
         jButton_AddEnfermedad = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -265,6 +262,8 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jLabel21 = new javax.swing.JLabel();
         jRadioButton_CausaNatural = new javax.swing.JRadioButton();
         jRadioButton_Accidente = new javax.swing.JRadioButton();
+        jRadioButton_PacienteEstable = new javax.swing.JRadioButton();
+        jRadioButton_PacienteGrave = new javax.swing.JRadioButton();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -272,13 +271,8 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
         jLabel_Seleccion_Tabla.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel_Seleccion_Tabla.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_Seleccion_Tabla.setText("Selecione una sala para ingresar al paciente:");
-        getContentPane().add(jLabel_Seleccion_Tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 830, -1));
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Salas disponibles");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 380, 180, -1));
+        jLabel_Seleccion_Tabla.setText("Salas disponibles para ingresar al paciente:");
+        getContentPane().add(jLabel_Seleccion_Tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 660, -1));
 
         txt_Nombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -292,7 +286,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NombreKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 290, 20));
+        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 220, 20));
 
         txt_CarnetiIdentidad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_CarnetiIdentidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -306,7 +300,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_CarnetiIdentidadKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_CarnetiIdentidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 150, 20));
+        getContentPane().add(txt_CarnetiIdentidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 220, 20));
 
         jTable_Salas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable_Salas.setModel(new javax.swing.table.DefaultTableModel(
@@ -322,28 +316,10 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable_Salas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 830, 180));
-
-        buttonGroup1.add(jRadioButton_PacienteEstable);
-        jRadioButton_PacienteEstable.setText("Paciente Estable");
-        jRadioButton_PacienteEstable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_PacienteEstableActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jRadioButton_PacienteEstable, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, -1, -1));
-
-        buttonGroup1.add(jRadioButton_PacienteGrave);
-        jRadioButton_PacienteGrave.setText("Paciente Grave");
-        jRadioButton_PacienteGrave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_PacienteGraveActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jRadioButton_PacienteGrave, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, -1, 120));
 
         jPanel_PacienteGrave.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel_PacienteGrave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_PacienteGrave.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel_PacienteGrave.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonGroup2.add(jRadioButton_Automovilistico);
@@ -364,43 +340,20 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         });
         jPanel_PacienteGrave.add(jRadioButton_Envenenado, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 4, -1, -1));
 
-        buttonGroup2.add(jRadioButton_Incendio);
-        jRadioButton_Incendio.setText("Incendio");
-        jRadioButton_Incendio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_IncendioActionPerformed(evt);
-            }
-        });
-        jPanel_PacienteGrave.add(jRadioButton_Incendio, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 4, -1, -1));
-
-        buttonGroup2.add(jRadioButton_Asfixia);
-        jRadioButton_Asfixia.setText("Asfixia");
-        jRadioButton_Asfixia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_AsfixiaActionPerformed(evt);
-            }
-        });
-        jPanel_PacienteGrave.add(jRadioButton_Asfixia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 4, -1, -1));
-
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel_PacienteGrave.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 30));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel_PacienteGrave.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 0, 10, 170));
-
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel_PacienteGrave.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 10, 170));
+        jPanel_PacienteGrave.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 10, 140));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel_PacienteGrave.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 10, 170));
+        jPanel_PacienteGrave.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 10, 140));
 
         jPanel_Accidente.setBackground(new java.awt.Color(255, 255, 255));
         jPanel_Accidente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -421,9 +374,9 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 jRadioButton_Conductor_SiActionPerformed(evt);
             }
         });
-        jPanel_Accidente.add(jRadioButton_Conductor_Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+        jPanel_Accidente.add(jRadioButton_Conductor_Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
-        jPanel_PacienteGrave.add(jPanel_Accidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 200, 140));
+        jPanel_PacienteGrave.add(jPanel_Accidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 220, 140));
 
         jPanel_Envenenado.setBackground(new java.awt.Color(255, 255, 255));
         jPanel_Envenenado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -457,9 +410,9 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
         buttonGroup_Envenenado.add(jRadioButton_Envenenado_No);
         jRadioButton_Envenenado_No.setText("No");
-        jPanel_Envenenado.add(jRadioButton_Envenenado_No, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        jPanel_Envenenado.add(jRadioButton_Envenenado_No, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
 
-        jPanel_PacienteGrave.add(jPanel_Envenenado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 200, 140));
+        jPanel_PacienteGrave.add(jPanel_Envenenado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 220, 140));
 
         jPanel_Incendio.setBackground(new java.awt.Color(255, 255, 255));
         jPanel_Incendio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -501,7 +454,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         });
         jPanel_Incendio.add(txt_LugarAfectado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 20));
 
-        jPanel_PacienteGrave.add(jPanel_Incendio, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, 200, 140));
+        jPanel_PacienteGrave.add(jPanel_Incendio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 220, 140));
 
         jPanel_Asfixia.setBackground(new java.awt.Color(255, 255, 255));
         jPanel_Asfixia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -527,7 +480,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
         buttonGroup_Asfixia_SustanciaToxica.add(jRadioButton_SustanciaToxica_SI);
         jRadioButton_SustanciaToxica_SI.setText("Si");
-        jPanel_Asfixia.add(jRadioButton_SustanciaToxica_SI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        jPanel_Asfixia.add(jRadioButton_SustanciaToxica_SI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 20));
 
         buttonGroup_Asfixia_SustanciaToxica.add(jRadioButton_SustanciaToxica_NO);
         jRadioButton_SustanciaToxica_NO.setText("No");
@@ -536,7 +489,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 jRadioButton_SustanciaToxica_NOActionPerformed(evt);
             }
         });
-        jPanel_Asfixia.add(jRadioButton_SustanciaToxica_NO, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+        jPanel_Asfixia.add(jRadioButton_SustanciaToxica_NO, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Nombre de la sustancia:");
@@ -544,11 +497,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Falta de Oxigeno:");
-        jPanel_Asfixia.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 120, -1));
+        jPanel_Asfixia.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 77, 120, 20));
 
         buttonGroup_Asfixia_FaltaOxigeno.add(jRadioButton_FaltaOxigeno_SI);
         jRadioButton_FaltaOxigeno_SI.setText("Si");
-        jPanel_Asfixia.add(jRadioButton_FaltaOxigeno_SI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel_Asfixia.add(jRadioButton_FaltaOxigeno_SI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 103, -1, 20));
 
         buttonGroup_Asfixia_FaltaOxigeno.add(jRadioButton_FaltaOxigeno_NO);
         jRadioButton_FaltaOxigeno_NO.setText("No");
@@ -557,11 +510,34 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 jRadioButton_FaltaOxigeno_NOActionPerformed(evt);
             }
         });
-        jPanel_Asfixia.add(jRadioButton_FaltaOxigeno_NO, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, -1, -1));
+        jPanel_Asfixia.add(jRadioButton_FaltaOxigeno_NO, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 103, -1, 20));
 
-        jPanel_PacienteGrave.add(jPanel_Asfixia, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 200, 140));
+        jPanel_PacienteGrave.add(jPanel_Asfixia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 140));
 
-        getContentPane().add(jPanel_PacienteGrave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 830, 170));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buttonGroup2.add(jRadioButton_Asfixia);
+        jRadioButton_Asfixia.setText("Asfixia");
+        jRadioButton_Asfixia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_AsfixiaActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jRadioButton_Asfixia, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 3, 70, 20));
+
+        buttonGroup2.add(jRadioButton_Incendio);
+        jRadioButton_Incendio.setText("Incendio");
+        jRadioButton_Incendio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_IncendioActionPerformed(evt);
+            }
+        });
+        jPanel7.add(jRadioButton_Incendio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 3, 90, 20));
+
+        jPanel_PacienteGrave.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 450, 30));
+
+        getContentPane().add(jPanel_PacienteGrave, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 450, 340));
 
         jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel13.setText("Registrar Paciente");
@@ -573,25 +549,25 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 jButton_AddEnfermedadActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton_AddEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 150, 25));
+        getContentPane().add(jButton_AddEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 670, 170, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Carnet de Identidad:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 130, -1));
+        jLabel3.setText("C I:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 60, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 60, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 60, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Enfermedad:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 110, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 90, -1));
 
-        jPanel1.add(jComboBox_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 260, -1));
+        jPanel1.add(jComboBox_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 190, -1));
 
         txt_TiempoEnfermedad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_TiempoEnfermedad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -605,15 +581,15 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_TiempoEnfermedadKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_TiempoEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 70, 20));
+        jPanel1.add(txt_TiempoEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 70, 20));
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Tiemo de detectada la enfermedad en días:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 270, -1));
+        jLabel14.setText("Días de detectada la enfermedad:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 210, -1));
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Tratamiento del Paciente:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 170, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 190, -1));
 
         txt_Tratamiento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_Tratamiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -627,11 +603,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_TratamientoKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_Tratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 180, 20));
+        jPanel1.add(txt_Tratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 480, 20));
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Día");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 30, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 30, -1));
 
         txt_NacimientoMes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_NacimientoMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -645,7 +621,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoMesKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 50, 20));
+        jPanel1.add(txt_NacimientoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 30, 20));
 
         txt_NacimientoYeard.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_NacimientoYeard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -659,7 +635,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoYeardKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoYeard, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 50, 20));
+        jPanel1.add(txt_NacimientoYeard, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 30, 20));
 
         txt_NacimientoDia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_NacimientoDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -673,23 +649,23 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoDiaKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 50, 20));
+        jPanel1.add(txt_NacimientoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 30, 20));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Mes");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 30, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 30, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("Año");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 50, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 30, -1));
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 130, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 130, -1));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("Tiemo est Permenencia:");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 150, -1));
+        jLabel20.setText("Tiemo de Permenencia:");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 150, -1));
 
         txt_TiempoEstimadoPermanencia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_TiempoEstimadoPermanencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -703,7 +679,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_TiempoEstimadoPermanenciaKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_TiempoEstimadoPermanencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 60, 60, 20));
+        jPanel1.add(txt_TiempoEstimadoPermanencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 30, 20));
 
         txt_TiempoEstimadoVida.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_TiempoEstimadoVida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -717,11 +693,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_TiempoEstimadoVidaKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_TiempoEstimadoVida, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 130, 60, 20));
+        jPanel1.add(txt_TiempoEstimadoVida, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 30, 20));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel21.setText("Tiempo Estimado de Vida:");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 160, -1));
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 160, -1));
 
         buttonGroup3.add(jRadioButton_CausaNatural);
         jRadioButton_CausaNatural.setText("Causa Natural");
@@ -730,7 +706,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 jRadioButton_CausaNaturalActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton_CausaNatural, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, -1, -1));
+        jPanel1.add(jRadioButton_CausaNatural, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 120, -1));
 
         buttonGroup3.add(jRadioButton_Accidente);
         jRadioButton_Accidente.setText("Accidente");
@@ -739,12 +715,30 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 jRadioButton_AccidenteActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton_Accidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 90, -1, -1));
+        jPanel1.add(jRadioButton_Accidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 110, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 830, 180));
+        buttonGroup1.add(jRadioButton_PacienteEstable);
+        jRadioButton_PacienteEstable.setText("Paciente Estable");
+        jRadioButton_PacienteEstable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_PacienteEstableActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton_PacienteEstable, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 120, -1));
+
+        buttonGroup1.add(jRadioButton_PacienteGrave);
+        jRadioButton_PacienteGrave.setText("Paciente Grave");
+        jRadioButton_PacienteGrave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_PacienteGraveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton_PacienteGrave, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 670, 190));
 
         jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/negro formulario.jpg"))); // NOI18N
-        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 870, 550));
+        getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 700, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1198,7 +1192,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup_Envenenado;
     private javax.swing.JButton jButton_AddEnfermedad;
     private javax.swing.JComboBox jComboBox_Enfermedad;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1224,8 +1217,8 @@ public class AdicionarPaciente extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel_Accidente;
     private javax.swing.JPanel jPanel_Asfixia;
     private javax.swing.JPanel jPanel_Envenenado;
