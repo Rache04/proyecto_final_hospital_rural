@@ -29,9 +29,9 @@ public class HospitalRural implements IHospitalRural {
     }
 
     @Override
-    public boolean addPaciente(Paciente paciente) {
+    public boolean addPaciente(Paciente paciente, Sala sala) {
 
-        return false;
+        return sala.getPacientes().add(paciente);
     }
 
     @Override

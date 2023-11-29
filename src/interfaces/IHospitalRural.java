@@ -15,7 +15,7 @@ public interface IHospitalRural {
     boolean crearSala(Sala sala);
 
     
-    boolean addPaciente(Paciente paciente);
+    boolean addPaciente(Paciente paciente, Sala sala);
 
     // funciona
     boolean addEnfermedadSala(String enfermedad, Sala sala);
