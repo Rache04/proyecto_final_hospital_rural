@@ -10,12 +10,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.Asfixia;
+import models.Automovilistico;
 import models.Paciente;
 import models.PacienteEstable;
 import models.PacienteGrave;
@@ -887,6 +889,8 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         boolean flap = true;
         String errors = "Error al ingresar paciente. Conprueve los siguientes campos:";
         String causa;
+        boolean chofer;
+        Calendar calendario = Calendar.getInstance();
 
         if (!ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
             flap = false;
@@ -955,51 +959,70 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                     errors = errors + "\n-Lugar afectado debe ser solamente una cadena de texto";
                 }
             }
-            if (jLabel_Seleccion_Tabla.getText().equals("Selecione una sala para ingresar al paciente:")) {
-                flap = false;
-                errors = errors + "\n-No ha selexionado ningúna sala en la cual ingresar al paciente";
-            } else {
-                for (Sala aux : this.hospital.getSalas()) {
-                    if (aux.getNombre().equals(jLabel_Seleccion_Tabla.getText())) {
-                        if (aux.getPacientes() == null && (aux.getCantMaximaCamas() - aux.getCamasOcupadas()) <= 0) {
+        }
+        if (jLabel_Seleccion_Tabla.getText().equals("Selecione una sala para ingresar al paciente:")) {
+            flap = false;
+            errors = errors + "\n-No ha selexionado ningúna sala en la cual ingresar al paciente";
+        } else {
+            for (Sala aux : this.hospital.getSalas()) {
+                if (aux.getNombre().equals(jLabel_Seleccion_Tabla.getText())) {
+                    if (aux.getPacientes() != null) {
+                        if ((aux.getCantMaximaCamas() - aux.getCamasOcupadas()) <= 0) {
                             flap = false;
                             errors = errors + "\n-La Sala selexionada no tiene camas disponibles";
                         }
                     }
                 }
             }
-
         }
-
         if (jRadioButton_CausaNatural.isSelected()) {
             causa = jRadioButton_CausaNatural.getText();
         } else {
             causa = jRadioButton_Accidente.getText();
         }
+        if (jRadioButton_Conductor_Si.isSelected()) {
+            chofer = true;
+        } else {
+            chofer = false;
+        }
 
         if (flap) {
-            if (jRadioButton_PacienteEstable.isSelected()) {
-//                LocalDateTime fechaHoraActual = LocalDateTime.now();
-//                Paciente paciente = new PacienteEstable(ValidarCampos.convertirEntero(txt_TiempoEnfermedad.getText()),
-//                        txt_Tratamiento.getText(), txt_CarnetiIdentidad.getText(), txt_Nombre.getText(),
-//                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes + "-" + txt_NacimientoYeard,
-//                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
-//                        fechaHoraActual.getDayOfMonth() + "-" + fechaHoraActual.getMonthValue() + "-" + fechaHoraActual.getYear(),
-//                        ValidarCampos.convertirEntero(txt_TiempoEstimadoPermanencia.getText()));
-//                this.hospital.addPaciente(paciente);
-//              this.hospital.getSalas().add(null)
-            } else {
-//                LocalDateTime fechaHoraActual = LocalDateTime.now();
-//                Paciente paciente = new PacienteGrave(ValidarCampos.convertirEntero(txt_TiempoEstimadoVida.getText()),
-//                        causa, txt_CarnetiIdentidad.getText(),
-//                        txt_Nombre.getText(), 
-//                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
-//                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
-//                        fechaHoraActual.getDayOfMonth() + "-" + fechaHoraActual.getMonthValue() + "-" + fechaHoraActual.getYear(),
-//                        ValidarCampos.convertirEntero(txt_TiempoEstimadoPermanencia.getText()));
-//                this.hospital.addPaciente(paciente);
-//              this.hospital.getSalas().add(null)              
+            if (jRadioButton_PacienteGrave.isSelected() && jRadioButton_Automovilistico.isSelected()) {
+                Paciente paciente = new Automovilistico(chofer, Integer.parseInt(txt_TiempoEstimadoVida.getText()),
+                        causa, txt_CarnetiIdentidad.getText(), txt_Nombre.getText(),
+                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
+                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
+                        calendario.get(Calendar.DAY_OF_MONTH) + "-" + calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.YEAR),
+                        Integer.parseInt(txt_TiempoEstimadoVida.getText()));
+
+                for (Sala aux : this.hospital.getSalas()) {
+                    if (aux.getNombre().equals(jLabel_Seleccion_Tabla.getText())) {
+                        this.hospital.addPaciente(paciente, aux);
+                    }
+                }
             }
+//            if (jRadioButton_PacienteEstable.isSelected()) {
+////                LocalDateTime fechaHoraActual = LocalDateTime.now();
+////                Paciente paciente = new PacienteEstable(ValidarCampos.convertirEntero(txt_TiempoEnfermedad.getText()),
+////                        txt_Tratamiento.getText(), txt_CarnetiIdentidad.getText(), txt_Nombre.getText(),
+////                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes + "-" + txt_NacimientoYeard,
+////                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
+////                        fechaHoraActual.getDayOfMonth() + "-" + fechaHoraActual.getMonthValue() + "-" + fechaHoraActual.getYear(),
+////                        ValidarCampos.convertirEntero(txt_TiempoEstimadoPermanencia.getText()));
+////                this.hospital.addPaciente(paciente);
+////              this.hospital.getSalas().add(null)
+//            } else {
+////                LocalDateTime fechaHoraActual = LocalDateTime.now();
+////                Paciente paciente = new PacienteGrave(ValidarCampos.convertirEntero(txt_TiempoEstimadoVida.getText()),
+////                        causa, txt_CarnetiIdentidad.getText(),
+////                        txt_Nombre.getText(), 
+////                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
+////                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
+////                        fechaHoraActual.getDayOfMonth() + "-" + fechaHoraActual.getMonthValue() + "-" + fechaHoraActual.getYear(),
+////                        ValidarCampos.convertirEntero(txt_TiempoEstimadoPermanencia.getText()));
+////                this.hospital.addPaciente(paciente);
+////              this.hospital.getSalas().add(null)              
+//            }
         } else {
             JOptionPane.showMessageDialog(null, errors);
         }
