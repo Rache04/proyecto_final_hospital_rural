@@ -3,11 +3,12 @@ package Vistas;
 
 public class ValidarCampos {
     public static boolean comprobarCamposTexto(String a){
-        if (a.matches("^(?i)[a-záéíóúñÁÉÍÓÚ\\s]+$")) {
-            return true;
-        }else{
-            return false;
+        for(char c : a.toCharArray()){
+            if (!Character.isWhitespace(c) && !Character.isLetter(c)) {
+                return false;
+            }
         }
+        return true;
     }
     
     public static boolean comprobarCamposNumericos(String a){
