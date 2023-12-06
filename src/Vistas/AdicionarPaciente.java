@@ -48,7 +48,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             jComboBox_Enfermedad.addItem(aux);
         }
 
-        
         jRadioButton_PacienteEstable.setSelected(true);
         jRadioButton_SustanciaToxica_SI.setSelected(true);
         jRadioButton_FaltaOxigeno_SI.setSelected(true);
@@ -69,7 +68,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
 //      Llenar la tabla segun lo que esté selecionado por defecto
         if (jRadioButton_PacienteEstable.isSelected()) {
-            DefaultTableModel model = new DefaultTableModel();
+            DefaultTableModel model = new DefaultTableModel() {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };;
             model.addColumn("Nombre");
             model.addColumn("Cantidad de Camas");
             model.addColumn("Camas Disponibles");
@@ -136,7 +139,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                      salas con la enfermedad que ha sido selexionada nuevamente
                      en el comboBox de Enfermedades*/
                     if (jRadioButton_PacienteEstable.isSelected()) {
-                        DefaultTableModel model = new DefaultTableModel();
+                        DefaultTableModel model = new DefaultTableModel() {
+                            public boolean isCellEditable(int row, int col) {
+                                return false;
+                            }
+                        };;
                         model.addColumn("Nombre");
                         model.addColumn("Cantidad de Camas");
                         model.addColumn("Camas Disponibles");
@@ -160,7 +167,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                             }
                         }
                     } else {
-                        DefaultTableModel model = new DefaultTableModel();
+                        DefaultTableModel model = new DefaultTableModel() {
+                            public boolean isCellEditable(int row, int col) {
+                                return false;
+                            }
+                        };;
                         model.addColumn("Nombre");
                         model.addColumn("Tipo de Sala");
                         model.addColumn("Cantidad de Camas");
@@ -765,7 +776,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jPanel_PacienteGrave.setVisible(false);
 
 //        Llenar la tabla si el usuario cambia el estado del paciente a estable
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };;
         model.addColumn("Nombre");
         model.addColumn("Cantidad de Camas");
         model.addColumn("Camas Disponibles");
@@ -806,7 +821,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         }
 
 //        Llenar la tabla si el usuario cambia el estado del paciente a Grave
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };;
         model.addColumn("Nombre");
         model.addColumn("Tipo de Sala");
         model.addColumn("Cantidad de Camas");
@@ -954,10 +973,10 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
         if (jRadioButton_CausaNatural.isSelected()) {
             causa = jRadioButton_CausaNatural.getText();
-        }else{
+        } else {
             causa = jRadioButton_Accidente.getText();
         }
-        
+
         if (flap) {
             if (jRadioButton_PacienteEstable.isSelected()) {
 //                LocalDateTime fechaHoraActual = LocalDateTime.now();

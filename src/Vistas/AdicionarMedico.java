@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import java.awt.Color;
@@ -9,27 +8,30 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class AdicionarMedico extends javax.swing.JDialog {
-    
+
     private ArrayList<String> especialidades = new ArrayList<>();
-    DefaultTableModel modelo = new DefaultTableModel();
+    DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int row, int col) {
+            return false;
+        }
+    };
+
+    ;
 
     public AdicionarMedico(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-         setResizable(false);
+        setResizable(false);
         setSize(555, 660);
         setLocationRelativeTo(null);
-        
+
         modelo.addColumn("Especialidades del médico");
 
         EspcTabla.setModel(this.modelo);
-        
-       
-       
+
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -294,7 +296,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
         // TODO add your handling code here:
         String validar = "";
         boolean flap = true;
-        
+
         if (!ValidarCampos.comprobarCamposTexto(TextNombre.getText())) {
             flap = false;
             validar = validar + "\n-Nombre del médico";
@@ -302,38 +304,38 @@ public class AdicionarMedico extends javax.swing.JDialog {
         if (!ValidarCampos.comprobarCamposNumericos(TextNI.getText()) || TextNI.getText().length() != 11) {
             flap = false;
             validar = validar + "\n-Número de identidad";
-        }       
-       
+        }
+
         if (flap) {
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(null, "Verifique los siguientes campos que presentan errores:" + validar);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void addEspcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEspcActionPerformed
         // TODO add your handling code here:
-         String[] Espc = new String[1];
-         if (!TextEspc.getText().equals("")) {
-             if (!especialidades.contains(TextEspc.getText())) {
-                    this.especialidades.add(TextEspc.getText());
-             Espc[0] = TextEspc.getText();
-         this.modelo.addRow(Espc);
-         TextEspc.setText("");
-         TextEspc.setBackground(Color.white);
-         }else{
-             TextEspc.setText("Especialidad ya existe");
-             TextEspc.setBackground(Color.red);
+        String[] Espc = new String[1];
+        if (!TextEspc.getText().equals("")) {
+            if (!especialidades.contains(TextEspc.getText())) {
+                this.especialidades.add(TextEspc.getText());
+                Espc[0] = TextEspc.getText();
+                this.modelo.addRow(Espc);
+                TextEspc.setText("");
+                TextEspc.setBackground(Color.white);
+            } else {
+                TextEspc.setText("Especialidad ya existe");
+                TextEspc.setBackground(Color.red);
             }
-        }    
+        }
     }//GEN-LAST:event_addEspcActionPerformed
 
     private void ElimEspcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ElimEspcActionPerformed
         // TODO add your handling code here:
         int fila = EspcTabla.getSelectedRow();
-        if (fila >= 0){
-        modelo.removeRow(fila);
-        }else{
+        if (fila >= 0) {
+            modelo.removeRow(fila);
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione la especialidad que desea eliminar");
         }
     }//GEN-LAST:event_ElimEspcActionPerformed

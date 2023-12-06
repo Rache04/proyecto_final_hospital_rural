@@ -16,7 +16,12 @@ import models.SalaTerapia;
 
 public class AdicionarSala extends javax.swing.JDialog {
 
-    private DefaultTableModel model = new DefaultTableModel();
+    private DefaultTableModel model = new DefaultTableModel() {
+        public boolean isCellEditable(int row, int col) {
+            return false;
+        }
+    };
+    ;
     private ArrayList<String> enfermedades = new ArrayList<>();
     private String auxEliminarEnfermedad = "";
     private int auxEliminarTabla;
@@ -357,7 +362,7 @@ public class AdicionarSala extends javax.swing.JDialog {
                 }
             }
         }
-        
+
         if (!ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
             flap = false;
             validacion = validacion + "\n-Nombre";
@@ -376,7 +381,7 @@ public class AdicionarSala extends javax.swing.JDialog {
         if (this.enfermedades.size() <= 0) {
             flap = false;
             validacion = validacion + "\n-La Sala a registrar no se especialisa en ninguna enfermedad";
-        }       
+        }
 
         if (flap) {
             //Adicionar una nueva Sala médica
