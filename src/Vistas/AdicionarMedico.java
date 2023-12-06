@@ -1,34 +1,92 @@
 package Vistas;
 
+import controllers.HospitalRural;
+import interfaces.IHospitalRural;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import models.Medico;
+import models.Sala;
 
 public class AdicionarMedico extends javax.swing.JDialog {
 
     private ArrayList<String> especialidades = new ArrayList<>();
-    DefaultTableModel modelo = new DefaultTableModel() {
+    private IHospitalRural hospital;
+    private ArrayList<String> salas = new ArrayList<>();
+
+//    Declaración de modelos para trabajar con los jTabel
+    DefaultTableModel modeloTablaEspecialidades = new DefaultTableModel() {
+        public boolean isCellEditable(int row, int col) {
+            return false;
+        }
+    };
+    DefaultTableModel modeloTablaSalas = new DefaultTableModel() {
+        public boolean isCellEditable(int row, int col) {
+            return false;
+        }
+    };
+    DefaultTableModel modeloTablaSalasTrabaja = new DefaultTableModel() {
         public boolean isCellEditable(int row, int col) {
             return false;
         }
     };
 
-    ;
-
-    public AdicionarMedico(java.awt.Frame parent, boolean modal) {
+    public AdicionarMedico(java.awt.Frame parent, boolean modal, HospitalRural hospital) {
         super(parent, modal);
         initComponents();
         setResizable(false);
         setSize(555, 660);
         setLocationRelativeTo(null);
+        this.hospital = hospital;
 
-        modelo.addColumn("Especialidades del médico");
+        modeloTablaEspecialidades.addColumn("Especialidades del médico");
+        EspcTabla.setModel(modeloTablaEspecialidades);
 
-        EspcTabla.setModel(this.modelo);
+        modeloTablaSalas.addColumn("Salas");
+        jTable_SalasHospital.setModel(modeloTablaSalas);
+        for (Sala aux : this.hospital.getSalas()) {
+            String[] datos = new String[1];
+            datos[0] = aux.getNombre();
+            modeloTablaSalas.addRow(datos);
+        }
+
+        modeloTablaSalasTrabaja.addColumn("Salas en las que trabaja");
+        jTable_SalasTrabaja.setModel(modeloTablaSalasTrabaja);
+
+//        Llenar la tabla de las salas en las cual trabaja dicho medico 
+        jTable_SalasHospital.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent Mouse_evt) {
+                if (Mouse_evt.getClickCount() == 1) {
+                    String[] datos = new String[1];
+                    datos[0] = String.valueOf(jTable_SalasHospital.getValueAt(jTable_SalasHospital.getSelectedRow(), 0));
+                    if (!salas.contains(datos[0])) {
+                        salas.add(datos[0]);
+                        modeloTablaSalasTrabaja.addRow(datos);
+                    }
+                }
+            }
+        });
+
+//        Remover salas de la tabla de salas en la cual trabaja dicho médico
+        jTable_SalasTrabaja.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent Mouse_evt) {
+                if (Mouse_evt.getClickCount() == 1) {
+                    if (!salas.isEmpty()) {
+                        salas.remove(String.valueOf(jTable_SalasTrabaja.getValueAt(jTable_SalasTrabaja.getSelectedRow(), 0)));
+                        modeloTablaSalasTrabaja.removeRow(jTable_SalasTrabaja.getSelectedRow());
+                    }
+                }
+            }
+        });
 
     }
 
@@ -46,9 +104,9 @@ public class AdicionarMedico extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable_SalasHospital = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTable_SalasTrabaja = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         addEspc = new javax.swing.JButton();
         TextNombre = new javax.swing.JTextField();
@@ -80,7 +138,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Salas del hospital:");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_SalasHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -91,9 +149,9 @@ public class AdicionarMedico extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTable_SalasHospital);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable_SalasTrabaja.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,7 +162,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(jTable_SalasTrabaja);
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Sala en la que trabaja:");
@@ -297,7 +355,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
         String validar = "";
         boolean flap = true;
 
-        if (!ValidarCampos.comprobarCamposTexto(TextNombre.getText())) {
+        if (TextNombre.getText().equals("") ||!ValidarCampos.comprobarCamposTexto(TextNombre.getText())) {
             flap = false;
             validar = validar + "\n-Nombre del médico";
         }
@@ -306,8 +364,27 @@ public class AdicionarMedico extends javax.swing.JDialog {
             validar = validar + "\n-Número de identidad";
         }
 
+        if (salas.isEmpty()) {
+            flap = false;
+            validar = validar + "\n-No ha selexionado ninguna Sala";
+        }
+        
+        for(Medico aux : hospital.getMedicos()){
+            if (TextNI.getText().equals(aux.getCi())) {
+                flap = false;
+                validar = validar + "\n-Ya existe un médico con el numero de carnet: " + TextNI.getText() + " registrado en el sistema";
+            }
+        }
         if (flap) {
-
+            ArrayList<Sala> salaAux = new ArrayList<>();
+            for(Sala aux : hospital.getSalas()){
+                if (salas.contains(aux.getNombre())) {
+                    salaAux.add(aux);
+                }
+            }
+            Medico medico = new Medico(TextNombre.getText(), TextNI.getText(), especialidades, salaAux);
+            this.hospital.addMedico(medico);
+            JOptionPane.showMessageDialog(null, "Se ha añadido correctamente al médico: " + TextNombre.getText());
         } else {
             JOptionPane.showMessageDialog(null, "Verifique los siguientes campos que presentan errores:" + validar);
         }
@@ -320,7 +397,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
             if (!especialidades.contains(TextEspc.getText())) {
                 this.especialidades.add(TextEspc.getText());
                 Espc[0] = TextEspc.getText();
-                this.modelo.addRow(Espc);
+                this.modeloTablaEspecialidades.addRow(Espc);
                 TextEspc.setText("");
                 TextEspc.setBackground(Color.white);
             } else {
@@ -334,7 +411,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
         // TODO add your handling code here:
         int fila = EspcTabla.getSelectedRow();
         if (fila >= 0) {
-            modelo.removeRow(fila);
+            modeloTablaEspecialidades.removeRow(fila);
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione la especialidad que desea eliminar");
         }
@@ -346,7 +423,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void TextNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNIKeyTyped
@@ -404,7 +481,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                AdicionarMedico dialog = new AdicionarMedico(new javax.swing.JFrame(), true);
+                AdicionarMedico dialog = new AdicionarMedico(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -438,7 +515,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable_SalasHospital;
+    private javax.swing.JTable jTable_SalasTrabaja;
     // End of variables declaration//GEN-END:variables
 }

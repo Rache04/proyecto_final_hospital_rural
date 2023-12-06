@@ -18,7 +18,7 @@ public class Principal extends javax.swing.JFrame {
         setResizable(false);
         setSize(625, 630);
         setLocationRelativeTo(null);
-        
+
         ArrayList<String> enfermedades = new ArrayList<>();
         enfermedades.add("Catarro");
         enfermedades.add("Gripe");
@@ -29,7 +29,7 @@ public class Principal extends javax.swing.JFrame {
         enfermedades1.add("AcidoXD");
         enfermedades1.add("Loco");
         enfermedades1.add("Catarro");
-        
+
         Sala s1 = new Sala("Quemado", enfermedades, 15, null);
         Sala s2 = new Sala("Operaciones", enfermedades1, 10, null);
         Sala s3 = new SalaTerapia("Intenciva", true, "Juan Alverto", "Extrangería", enfermedades, 23, null);
@@ -222,9 +222,12 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        AdicionarMedico medico = new AdicionarMedico(this, rootPaneCheckingEnabled);
-        medico.setVisible(true);
+        if (!hospital.getSalas().isEmpty()) {
+            AdicionarMedico medico = new AdicionarMedico(this, rootPaneCheckingEnabled, (HospitalRural) hospital);
+            medico.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay ninguna sala registrada en el Hospital en la cual\npueda trabajar un médico");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -248,7 +251,7 @@ public class Principal extends javax.swing.JFrame {
                 if (aux.getCantMaximaCamas() > aux.getCamasOcupadas()) {
                     flap2 = true;
                 }
-            }else{
+            } else {
                 flap2 = true;
             }
         }
