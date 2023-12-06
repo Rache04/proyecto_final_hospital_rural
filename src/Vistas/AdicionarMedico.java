@@ -348,32 +348,22 @@ public class AdicionarMedico extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void TextNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNIKeyTyped
-        // TODO add your handling code here:
-        char ni = evt.getKeyChar();
-        if (!Character.isDigit(ni)
-                || (ni == KeyEvent.VK_BACK_SPACE)
-                || (ni == KeyEvent.VK_DELETE)
-                || TextNI.getText().length() >= 11) {
+        char c = evt.getKeyChar();
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c)) || TextNI.getText().length() >= 11) {
             evt.consume();
         }
     }//GEN-LAST:event_TextNIKeyTyped
 
     private void TextNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNombreKeyTyped
-        // TODO add your handling code here:
-        char no = evt.getKeyChar();
-        if (Character.isDigit(no)
-                || (no == KeyEvent.VK_BACK_SPACE)
-                || (no == KeyEvent.VK_DELETE)) {
+        char c = evt.getKeyChar();
+        if (!ValidarCampos.comprobarCamposTexto(String.valueOf(c))) {
             evt.consume();
         }
     }//GEN-LAST:event_TextNombreKeyTyped
 
     private void TextEspcKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextEspcKeyTyped
-        // TODO add your handling code here:
-        char es = evt.getKeyChar();
-        if (Character.isDigit(es)
-                || (es == KeyEvent.VK_BACK_SPACE)
-                || (es == KeyEvent.VK_DELETE)) {
+        char c = evt.getKeyChar();
+        if (!ValidarCampos.comprobarCamposTexto(String.valueOf(c))) {
             evt.consume();
         }
     }//GEN-LAST:event_TextEspcKeyTyped

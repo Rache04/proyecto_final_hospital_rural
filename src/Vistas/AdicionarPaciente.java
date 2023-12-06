@@ -200,8 +200,34 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         buttonGroup_Envenenado = new javax.swing.ButtonGroup();
         buttonGroup_Accidente_Conductor = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
-        jLabel_Seleccion_Tabla = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox_Enfermedad = new javax.swing.JComboBox();
+        txt_TiempoEnfermedad = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txt_Tratamiento = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        txt_NacimientoMes = new javax.swing.JTextField();
+        txt_NacimientoYeard = new javax.swing.JTextField();
+        txt_NacimientoDia = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        txt_TiempoEstimadoPermanencia = new javax.swing.JTextField();
+        txt_TiempoEstimadoVida = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        jRadioButton_CausaNatural = new javax.swing.JRadioButton();
+        jRadioButton_Accidente = new javax.swing.JRadioButton();
+        jRadioButton_PacienteEstable = new javax.swing.JRadioButton();
+        jRadioButton_PacienteGrave = new javax.swing.JRadioButton();
+        txt_CarnetiIdentidad = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         txt_Nombre = new javax.swing.JTextField();
+        jLabel_Seleccion_Tabla = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Salas = new javax.swing.JTable();
         jPanel_PacienteGrave = new javax.swing.JPanel();
@@ -238,41 +264,212 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jRadioButton_Asfixia = new javax.swing.JRadioButton();
         jRadioButton_Incendio = new javax.swing.JRadioButton();
         jButton_AddEnfermedad = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox_Enfermedad = new javax.swing.JComboBox();
-        txt_TiempoEnfermedad = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        txt_Tratamiento = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        txt_NacimientoMes = new javax.swing.JTextField();
-        txt_NacimientoYeard = new javax.swing.JTextField();
-        txt_NacimientoDia = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        txt_TiempoEstimadoPermanencia = new javax.swing.JTextField();
-        txt_TiempoEstimadoVida = new javax.swing.JTextField();
-        jLabel21 = new javax.swing.JLabel();
-        jRadioButton_CausaNatural = new javax.swing.JRadioButton();
-        jRadioButton_Accidente = new javax.swing.JRadioButton();
-        jRadioButton_PacienteEstable = new javax.swing.JRadioButton();
-        jRadioButton_PacienteGrave = new javax.swing.JRadioButton();
-        txt_CarnetiIdentidad = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         jLabel_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel_Seleccion_Tabla.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel_Seleccion_Tabla.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel_Seleccion_Tabla.setText("Salas disponibles para ingresar al paciente:");
-        getContentPane().add(jLabel_Seleccion_Tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 660, -1));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("C I:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 60, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Nombre:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 60, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Enfermedad:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 90, -1));
+
+        jPanel1.add(jComboBox_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 190, -1));
+
+        txt_TiempoEnfermedad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_TiempoEnfermedad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_TiempoEnfermedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_TiempoEnfermedadActionPerformed(evt);
+            }
+        });
+        txt_TiempoEnfermedad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_TiempoEnfermedadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_TiempoEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 70, 20));
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel14.setText("Días de detectada la enfermedad:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 210, -1));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setText("Tratamiento del Paciente:");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 190, -1));
+
+        txt_Tratamiento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_Tratamiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_Tratamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_TratamientoActionPerformed(evt);
+            }
+        });
+        txt_Tratamiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_TratamientoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_Tratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 480, 20));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel16.setText("Día");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 30, -1));
+
+        txt_NacimientoMes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_NacimientoMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_NacimientoMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NacimientoMesActionPerformed(evt);
+            }
+        });
+        txt_NacimientoMes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NacimientoMesKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_NacimientoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 30, 20));
+
+        txt_NacimientoYeard.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_NacimientoYeard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_NacimientoYeard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NacimientoYeardActionPerformed(evt);
+            }
+        });
+        txt_NacimientoYeard.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NacimientoYeardKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_NacimientoYeard, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 30, 20));
+
+        txt_NacimientoDia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_NacimientoDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_NacimientoDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NacimientoDiaActionPerformed(evt);
+            }
+        });
+        txt_NacimientoDia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NacimientoDiaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_NacimientoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 30, 20));
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel17.setText("Mes");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 30, -1));
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel18.setText("Año");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 30, -1));
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setText("Fecha de nacimiento:");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 130, -1));
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel20.setText("Tiempo de Permenencia:");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 160, -1));
+
+        txt_TiempoEstimadoPermanencia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_TiempoEstimadoPermanencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_TiempoEstimadoPermanencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_TiempoEstimadoPermanenciaActionPerformed(evt);
+            }
+        });
+        txt_TiempoEstimadoPermanencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_TiempoEstimadoPermanenciaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_TiempoEstimadoPermanencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 30, 20));
+
+        txt_TiempoEstimadoVida.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_TiempoEstimadoVida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_TiempoEstimadoVida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_TiempoEstimadoVidaActionPerformed(evt);
+            }
+        });
+        txt_TiempoEstimadoVida.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_TiempoEstimadoVidaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_TiempoEstimadoVida, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 30, 20));
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel21.setText("Tiempo Estimado de Vida:");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 160, -1));
+
+        buttonGroup3.add(jRadioButton_CausaNatural);
+        jRadioButton_CausaNatural.setText("Causa Natural");
+        jRadioButton_CausaNatural.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_CausaNaturalActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton_CausaNatural, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 120, -1));
+
+        buttonGroup3.add(jRadioButton_Accidente);
+        jRadioButton_Accidente.setText("Accidente");
+        jRadioButton_Accidente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_AccidenteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton_Accidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 110, -1));
+
+        buttonGroup1.add(jRadioButton_PacienteEstable);
+        jRadioButton_PacienteEstable.setText("Paciente Estable");
+        jRadioButton_PacienteEstable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_PacienteEstableActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton_PacienteEstable, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 120, -1));
+
+        buttonGroup1.add(jRadioButton_PacienteGrave);
+        jRadioButton_PacienteGrave.setText("Paciente Grave");
+        jRadioButton_PacienteGrave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton_PacienteGraveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton_PacienteGrave, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, -1));
+
+        txt_CarnetiIdentidad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txt_CarnetiIdentidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txt_CarnetiIdentidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_CarnetiIdentidadActionPerformed(evt);
+            }
+        });
+        txt_CarnetiIdentidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_CarnetiIdentidadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_CarnetiIdentidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 200, 20));
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel13.setText("Registrar Paciente");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 180, -1));
 
         txt_Nombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -286,7 +483,14 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NombreKeyTyped(evt);
             }
         });
-        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 200, 20));
+        jPanel1.add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 200, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 670, 190));
+
+        jLabel_Seleccion_Tabla.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Seleccion_Tabla.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_Seleccion_Tabla.setText("Salas disponibles para ingresar al paciente:");
+        getContentPane().add(jLabel_Seleccion_Tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 660, -1));
 
         jTable_Salas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTable_Salas.setModel(new javax.swing.table.DefaultTableModel(
@@ -533,210 +737,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         });
         getContentPane().add(jButton_AddEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 670, 170, 30));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("C I:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 60, -1));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 60, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Enfermedad:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 90, -1));
-
-        jPanel1.add(jComboBox_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 190, -1));
-
-        txt_TiempoEnfermedad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_TiempoEnfermedad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_TiempoEnfermedad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_TiempoEnfermedadActionPerformed(evt);
-            }
-        });
-        txt_TiempoEnfermedad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_TiempoEnfermedadKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_TiempoEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 70, 20));
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Días de detectada la enfermedad:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 210, -1));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel15.setText("Tratamiento del Paciente:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 190, -1));
-
-        txt_Tratamiento.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_Tratamiento.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_Tratamiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_TratamientoActionPerformed(evt);
-            }
-        });
-        txt_Tratamiento.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_TratamientoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_Tratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 480, 20));
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Día");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 30, -1));
-
-        txt_NacimientoMes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_NacimientoMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_NacimientoMes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NacimientoMesActionPerformed(evt);
-            }
-        });
-        txt_NacimientoMes.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NacimientoMesKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_NacimientoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 30, 20));
-
-        txt_NacimientoYeard.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_NacimientoYeard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_NacimientoYeard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NacimientoYeardActionPerformed(evt);
-            }
-        });
-        txt_NacimientoYeard.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NacimientoYeardKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_NacimientoYeard, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 30, 20));
-
-        txt_NacimientoDia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_NacimientoDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_NacimientoDia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NacimientoDiaActionPerformed(evt);
-            }
-        });
-        txt_NacimientoDia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NacimientoDiaKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_NacimientoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 30, 20));
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel17.setText("Mes");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 30, -1));
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Año");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 30, -1));
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel19.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 130, -1));
-
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("Tiempo de Permenencia:");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 160, -1));
-
-        txt_TiempoEstimadoPermanencia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_TiempoEstimadoPermanencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_TiempoEstimadoPermanencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_TiempoEstimadoPermanenciaActionPerformed(evt);
-            }
-        });
-        txt_TiempoEstimadoPermanencia.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_TiempoEstimadoPermanenciaKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_TiempoEstimadoPermanencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 30, 20));
-
-        txt_TiempoEstimadoVida.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_TiempoEstimadoVida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_TiempoEstimadoVida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_TiempoEstimadoVidaActionPerformed(evt);
-            }
-        });
-        txt_TiempoEstimadoVida.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_TiempoEstimadoVidaKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_TiempoEstimadoVida, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 30, 20));
-
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel21.setText("Tiempo Estimado de Vida:");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, 160, -1));
-
-        buttonGroup3.add(jRadioButton_CausaNatural);
-        jRadioButton_CausaNatural.setText("Causa Natural");
-        jRadioButton_CausaNatural.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_CausaNaturalActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jRadioButton_CausaNatural, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 120, -1));
-
-        buttonGroup3.add(jRadioButton_Accidente);
-        jRadioButton_Accidente.setText("Accidente");
-        jRadioButton_Accidente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_AccidenteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jRadioButton_Accidente, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, 110, -1));
-
-        buttonGroup1.add(jRadioButton_PacienteEstable);
-        jRadioButton_PacienteEstable.setText("Paciente Estable");
-        jRadioButton_PacienteEstable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_PacienteEstableActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jRadioButton_PacienteEstable, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 120, -1));
-
-        buttonGroup1.add(jRadioButton_PacienteGrave);
-        jRadioButton_PacienteGrave.setText("Paciente Grave");
-        jRadioButton_PacienteGrave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton_PacienteGraveActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jRadioButton_PacienteGrave, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 110, -1));
-
-        txt_CarnetiIdentidad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        txt_CarnetiIdentidad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txt_CarnetiIdentidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_CarnetiIdentidadActionPerformed(evt);
-            }
-        });
-        txt_CarnetiIdentidad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_CarnetiIdentidadKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_CarnetiIdentidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 200, 20));
-
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel13.setText("Registrar Paciente");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 180, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 670, 190));
-
         jLabel_wallpaper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/negro formulario.jpg"))); // NOI18N
         getContentPane().add(jLabel_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 700, 720));
 
@@ -762,6 +762,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         txt_TiempoEstimadoPermanencia.setVisible(true);
         txt_TiempoEnfermedad.setVisible(true);
         txt_Tratamiento.setVisible(true);
+        jPanel_PacienteGrave.setVisible(false);
 
 //        Llenar la tabla si el usuario cambia el estado del paciente a estable
         DefaultTableModel model = new DefaultTableModel();
@@ -800,6 +801,9 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         txt_TiempoEstimadoPermanencia.setVisible(false);
         jLabel21.setVisible(true);
         txt_TiempoEstimadoVida.setVisible(true);
+        if (jRadioButton_Accidente.isSelected()) {
+            jPanel_PacienteGrave.setVisible(true);
+        }
 
 //        Llenar la tabla si el usuario cambia el estado del paciente a Grave
         DefaultTableModel model = new DefaultTableModel();
@@ -1005,36 +1009,45 @@ public class AdicionarPaciente extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButton_IncendioActionPerformed
 
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
-
+        char c = evt.getKeyChar();
+        if (!ValidarCampos.comprobarCamposTexto(String.valueOf(c))) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txt_NombreKeyTyped
 
     private void txt_CarnetiIdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_CarnetiIdentidadKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c)
-                || (c == KeyEvent.VK_BACK_SPACE)
-                || (c == KeyEvent.VK_DELETE)
-                || txt_CarnetiIdentidad.getText().length() >= 11) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c)) || txt_CarnetiIdentidad.getText().length() >= 11) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_CarnetiIdentidadKeyTyped
 
     private void txt_SustanciaIngerida_EnvenenamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SustanciaIngerida_EnvenenamientoKeyTyped
-
+        char c = evt.getKeyChar();
+        if (!ValidarCampos.comprobarCamposTexto(String.valueOf(c))) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txt_SustanciaIngerida_EnvenenamientoKeyTyped
 
     private void txt_SustanciaIngerida_AsfixiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SustanciaIngerida_AsfixiaKeyTyped
-
+        char c = evt.getKeyChar();
+        if (!ValidarCampos.comprobarCamposTexto(String.valueOf(c))) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txt_SustanciaIngerida_AsfixiaKeyTyped
 
     private void txt_GradoQuemaduraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_GradoQuemaduraKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c)) || txt_GradoQuemadura.getText().length() >= 1) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_GradoQuemaduraKeyTyped
 
     private void txt_LugarAfectadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_LugarAfectadoKeyTyped
-
+        char c = evt.getKeyChar();
+        if (!ValidarCampos.comprobarCamposTexto(String.valueOf(c))) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txt_LugarAfectadoKeyTyped
 
     private void txt_TiempoEnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TiempoEnfermedadActionPerformed
@@ -1043,7 +1056,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_TiempoEnfermedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TiempoEnfermedadKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_TiempoEnfermedadKeyTyped
@@ -1053,7 +1066,10 @@ public class AdicionarPaciente extends javax.swing.JDialog {
     }//GEN-LAST:event_txt_TratamientoActionPerformed
 
     private void txt_TratamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TratamientoKeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+        if (!ValidarCampos.comprobarCamposTexto(String.valueOf(c))) {
+            evt.consume();
+        }
     }//GEN-LAST:event_txt_TratamientoKeyTyped
 
     private void txt_NacimientoMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NacimientoMesActionPerformed
@@ -1062,7 +1078,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_NacimientoMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NacimientoMesKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_NacimientoMesKeyTyped
@@ -1073,7 +1089,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_NacimientoYeardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NacimientoYeardKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_NacimientoYeardKeyTyped
@@ -1084,7 +1100,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_NacimientoDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NacimientoDiaKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_NacimientoDiaKeyTyped
@@ -1095,7 +1111,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_TiempoEstimadoPermanenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TiempoEstimadoPermanenciaKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_TiempoEstimadoPermanenciaKeyTyped
@@ -1106,7 +1122,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_TiempoEstimadoVidaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TiempoEstimadoVidaKeyTyped
         char c = evt.getKeyChar();
-        if (!Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE)) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_TiempoEstimadoVidaKeyTyped
