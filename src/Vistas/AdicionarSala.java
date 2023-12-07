@@ -34,7 +34,7 @@ public class AdicionarSala extends javax.swing.JDialog {
         this.hospital = hospital;
         setLocationRelativeTo(null);
         setResizable(false);
-        setSize(443, 580);
+        setSize(443, 620);
         setTitle("Registro Sala");
 
         jRadioButton_Acompanante_Si.setSelected(true);
@@ -77,12 +77,8 @@ public class AdicionarSala extends javax.swing.JDialog {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         buttonGroup3 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
-        jButton_AddEnfermedad = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable_Enfermedades = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel_SalaTerapia = new javax.swing.JPanel();
         txt_NombreDirector = new javax.swing.JTextField();
@@ -103,29 +99,15 @@ public class AdicionarSala extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jRadioButton_SalaTerapia_Si = new javax.swing.JRadioButton();
         jRadioButton_SalaTerapia_No = new javax.swing.JRadioButton();
+        jButton_AddEnfermedad = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Registrar Sala");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 150, -1));
-
-        jButton_AddEnfermedad.setText("Agregar Enfermedad");
-        jButton_AddEnfermedad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_AddEnfermedadActionPerformed(evt);
-            }
-        });
-        jButton_AddEnfermedad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jButton_AddEnfermedadKeyTyped(evt);
-            }
-        });
-        getContentPane().add(jButton_AddEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 150, 25));
 
         jTable_Enfermedades.setBackground(new java.awt.Color(51, 51, 51));
         jTable_Enfermedades.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -143,30 +125,13 @@ public class AdicionarSala extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable_Enfermedades);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 400, 140));
-
-        jButton1.setText("Eliminar Enfermedad Selecionada");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 470, 220, 25));
-
-        jButton2.setText("Agregar Sala");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 380, 25));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 400, 140));
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Formulario para registrar sala", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel_SalaTerapia.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel_SalaTerapia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_SalaTerapia.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_NombreDirector.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -181,22 +146,22 @@ public class AdicionarSala extends javax.swing.JDialog {
                 txt_NombreDirectorKeyTyped(evt);
             }
         });
-        jPanel_SalaTerapia.add(txt_NombreDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 270, 20));
+        jPanel_SalaTerapia.add(txt_NombreDirector, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 270, 20));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Terapia Intermedia:");
-        jPanel_SalaTerapia.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, -1));
+        jPanel_SalaTerapia.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 130, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nombre Director:");
-        jPanel_SalaTerapia.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, -1));
+        jPanel_SalaTerapia.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 110, -1));
 
         buttonGroup1.add(jRadioButton_Acompanante_Si);
         jRadioButton_Acompanante_Si.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButton_Acompanante_Si.setText("Si");
-        jPanel_SalaTerapia.add(jRadioButton_Acompanante_Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
+        jPanel_SalaTerapia.add(jRadioButton_Acompanante_Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
 
         buttonGroup1.add(jRadioButton_Acompanante_No);
         jRadioButton_Acompanante_No.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,32 +171,32 @@ public class AdicionarSala extends javax.swing.JDialog {
                 jRadioButton_Acompanante_NoActionPerformed(evt);
             }
         });
-        jPanel_SalaTerapia.add(jRadioButton_Acompanante_No, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
+        jPanel_SalaTerapia.add(jRadioButton_Acompanante_No, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Acompañante:");
-        jPanel_SalaTerapia.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 110, -1));
+        jPanel_SalaTerapia.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 110, -1));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Terapia Intenciva:");
-        jPanel_SalaTerapia.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 110, -1));
+        jPanel_SalaTerapia.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 110, -1));
 
         buttonGroup3.add(jRadioButton_TerapiaIntenciva);
         jRadioButton_TerapiaIntenciva.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel_SalaTerapia.add(jRadioButton_TerapiaIntenciva, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
+        jPanel_SalaTerapia.add(jRadioButton_TerapiaIntenciva, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, -1, -1));
 
         buttonGroup3.add(jRadioButton_TerapiaIntermedia);
         jRadioButton_TerapiaIntermedia.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel_SalaTerapia.add(jRadioButton_TerapiaIntermedia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
+        jPanel_SalaTerapia.add(jRadioButton_TerapiaIntermedia, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
 
-        jPanel1.add(jPanel_SalaTerapia, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 400, 110));
+        jPanel1.add(jPanel_SalaTerapia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 380, 110));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Sala de Terapia:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 110, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 110, -1));
 
         txt_Nombre.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_Nombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -245,7 +210,7 @@ public class AdicionarSala extends javax.swing.JDialog {
                 txt_NombreKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 270, 20));
+        jPanel1.add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 30, 270, 20));
 
         txt_CantidadCamas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_CantidadCamas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -278,12 +243,12 @@ public class AdicionarSala extends javax.swing.JDialog {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Agregar Enfermedad");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 150, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Nombre Sala:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 110, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 110, -1));
 
         buttonGroup2.add(jRadioButton_SalaTerapia_Si);
         jRadioButton_SalaTerapia_Si.setForeground(new java.awt.Color(255, 255, 255));
@@ -293,7 +258,7 @@ public class AdicionarSala extends javax.swing.JDialog {
                 jRadioButton_SalaTerapia_SiActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton_SalaTerapia_Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, -1, -1));
+        jPanel1.add(jRadioButton_SalaTerapia_Si, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
 
         buttonGroup2.add(jRadioButton_SalaTerapia_No);
         jRadioButton_SalaTerapia_No.setForeground(new java.awt.Color(255, 255, 255));
@@ -303,16 +268,57 @@ public class AdicionarSala extends javax.swing.JDialog {
                 jRadioButton_SalaTerapia_NoActionPerformed(evt);
             }
         });
-        jPanel1.add(jRadioButton_SalaTerapia_No, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, -1, -1));
+        jPanel1.add(jRadioButton_SalaTerapia_No, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, 280));
+        jButton_AddEnfermedad.setText("Agregar");
+        jButton_AddEnfermedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_AddEnfermedadActionPerformed(evt);
+            }
+        });
+        jButton_AddEnfermedad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jButton_AddEnfermedadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(jButton_AddEnfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, 80, 25));
+
+        jButton1.setText("Eliminar enfermedad");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 150, 25));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 400, 350));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 400, 80));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aceptado.png"))); // NOI18N
+        jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, -1));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rechazado.png"))); // NOI18N
+        jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 260, 60));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/negro formulario.jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 560));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -336,6 +342,8 @@ public class AdicionarSala extends javax.swing.JDialog {
                     txt_Enfermedad.setBackground(Color.red);
                 }
             }
+        }else{
+            JOptionPane.showMessageDialog(null, "Escriba la enfermedad que desea agregar");
         }
     }//GEN-LAST:event_jButton_AddEnfermedadActionPerformed
 
@@ -347,6 +355,8 @@ public class AdicionarSala extends javax.swing.JDialog {
             auxEliminarEnfermedad = "";
 
             jTable_Enfermedades.setModel(model);
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione la enfermedad que desea eliminar");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -471,6 +481,19 @@ public class AdicionarSala extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton_AddEnfermedadKeyTyped
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        txt_Nombre.setText("");
+        txt_Enfermedad.setText("");
+        txt_NombreDirector.setText("");
+        txt_CantidadCamas.setText("");
+        
+        for(int i = 0; i < jTable_Enfermedades.getRowCount(); i++ ){
+              model.removeRow(i);
+              i = -1;
+          }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -519,8 +542,8 @@ public class AdicionarSala extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton_AddEnfermedad;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

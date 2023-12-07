@@ -419,7 +419,20 @@ public class AdicionarMedico extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        System.exit(-1);
+        TextNombre.setText("");
+        TextNI.setText("");
+        TextEspc.setText("");
+        
+        for(int i = 0; i < jTable_SalasTrabaja.getRowCount(); i++ ){
+              modeloTablaSalasTrabaja.removeRow(i);
+              i = -1;
+          }
+        
+          for(int i = 0; i < EspcTabla.getRowCount(); i++ ){
+              modeloTablaEspecialidades.removeRow(i);
+              i = -1;
+          }
+      
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
