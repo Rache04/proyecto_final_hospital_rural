@@ -48,21 +48,6 @@ public class AdicionarSala extends javax.swing.JDialog {
 
         this.model.addColumn("Enfermedades tratadas en la Sala");
         jTable_Enfermedades.setModel(this.model);
-
-        /* Fagmento de código para poder selecionar a las enfermedades de la
-         tabla de las enfermedades para posteriormente eliminarlas
-         */
-        jTable_Enfermedades.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent Mouse_evt) {
-                JTable tabla = (JTable) Mouse_evt.getSource();
-                Point paint = Mouse_evt.getPoint();
-                int row = tabla.rowAtPoint(paint);
-                if (Mouse_evt.getClickCount() == 1) {
-                    auxEliminarEnfermedad = jTable_Enfermedades.getValueAt(jTable_Enfermedades.getSelectedRow(), 0).toString();
-                    auxEliminarTabla = jTable_Enfermedades.getSelectedRow();
-                }
-            }
-        });
     }
 
     /**
@@ -123,6 +108,11 @@ public class AdicionarSala extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_Enfermedades.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable_EnfermedadesMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_Enfermedades);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 400, 140));
@@ -342,7 +332,7 @@ public class AdicionarSala extends javax.swing.JDialog {
                     txt_Enfermedad.setBackground(Color.red);
                 }
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Escriba la enfermedad que desea agregar");
         }
     }//GEN-LAST:event_jButton_AddEnfermedadActionPerformed
@@ -355,7 +345,7 @@ public class AdicionarSala extends javax.swing.JDialog {
             auxEliminarEnfermedad = "";
 
             jTable_Enfermedades.setModel(model);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione la enfermedad que desea eliminar");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -487,12 +477,17 @@ public class AdicionarSala extends javax.swing.JDialog {
         txt_Enfermedad.setText("");
         txt_NombreDirector.setText("");
         txt_CantidadCamas.setText("");
-        
-        for(int i = 0; i < jTable_Enfermedades.getRowCount(); i++ ){
-              model.removeRow(i);
-              i = -1;
-          }
+
+        for (int i = 0; i < jTable_Enfermedades.getRowCount(); i++) {
+            model.removeRow(i);
+            i = -1;
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTable_EnfermedadesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_EnfermedadesMousePressed
+        auxEliminarEnfermedad = jTable_Enfermedades.getValueAt(jTable_Enfermedades.getSelectedRow(), 0).toString();
+        auxEliminarTabla = jTable_Enfermedades.getSelectedRow();
+    }//GEN-LAST:event_jTable_EnfermedadesMousePressed
 
     /**
      * @param args the command line arguments

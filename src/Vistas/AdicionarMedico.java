@@ -61,33 +61,6 @@ public class AdicionarMedico extends javax.swing.JDialog {
 
         modeloTablaSalasTrabaja.addColumn("Salas en las que trabaja");
         jTable_SalasTrabaja.setModel(modeloTablaSalasTrabaja);
-
-//        Llenar la tabla de las salas en las cual trabaja dicho medico 
-        jTable_SalasHospital.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent Mouse_evt) {
-                if (Mouse_evt.getClickCount() == 1) {
-                    String[] datos = new String[1];
-                    datos[0] = String.valueOf(jTable_SalasHospital.getValueAt(jTable_SalasHospital.getSelectedRow(), 0));
-                    if (!salas.contains(datos[0])) {
-                        salas.add(datos[0]);
-                        modeloTablaSalasTrabaja.addRow(datos);
-                    }
-                }
-            }
-        });
-
-//        Remover salas de la tabla de salas en la cual trabaja dicho médico
-        jTable_SalasTrabaja.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent Mouse_evt) {
-                if (Mouse_evt.getClickCount() == 1) {
-                    if (!salas.isEmpty()) {
-                        salas.remove(String.valueOf(jTable_SalasTrabaja.getValueAt(jTable_SalasTrabaja.getSelectedRow(), 0)));
-                        modeloTablaSalasTrabaja.removeRow(jTable_SalasTrabaja.getSelectedRow());
-                    }
-                }
-            }
-        });
-
     }
 
     /**
@@ -149,6 +122,11 @@ public class AdicionarMedico extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_SalasHospital.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable_SalasHospitalMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable_SalasHospital);
 
         jTable_SalasTrabaja.setModel(new javax.swing.table.DefaultTableModel(
@@ -162,6 +140,11 @@ public class AdicionarMedico extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_SalasTrabaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable_SalasTrabajaMousePressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable_SalasTrabaja);
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -355,7 +338,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
         String validar = "";
         boolean flap = true;
 
-        if (TextNombre.getText().equals("") ||!ValidarCampos.comprobarCamposTexto(TextNombre.getText())) {
+        if (TextNombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(TextNombre.getText())) {
             flap = false;
             validar = validar + "\n-Nombre del médico";
         }
@@ -368,8 +351,8 @@ public class AdicionarMedico extends javax.swing.JDialog {
             flap = false;
             validar = validar + "\n-No ha selexionado ninguna Sala";
         }
-        
-        for(Medico aux : hospital.getMedicos()){
+
+        for (Medico aux : hospital.getMedicos()) {
             if (TextNI.getText().equals(aux.getCi())) {
                 flap = false;
                 validar = validar + "\n-Ya existe un médico con el numero de carnet: " + TextNI.getText() + " registrado en el sistema";
@@ -377,7 +360,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
         }
         if (flap) {
             ArrayList<Sala> salaAux = new ArrayList<>();
-            for(Sala aux : hospital.getSalas()){
+            for (Sala aux : hospital.getSalas()) {
                 if (salas.contains(aux.getNombre())) {
                     salaAux.add(aux);
                 }
@@ -422,21 +405,21 @@ public class AdicionarMedico extends javax.swing.JDialog {
         TextNombre.setText("");
         TextNI.setText("");
         TextEspc.setText("");
-        
-        for(int i = 0; i < jTable_SalasTrabaja.getRowCount(); i++ ){
-              modeloTablaSalasTrabaja.removeRow(i);
-              i = -1;
-          }
-        
-          for(int i = 0; i < EspcTabla.getRowCount(); i++ ){
-              modeloTablaEspecialidades.removeRow(i);
-              i = -1;
-          }
-      
+
+        for (int i = 0; i < jTable_SalasTrabaja.getRowCount(); i++) {
+            modeloTablaSalasTrabaja.removeRow(i);
+            i = -1;
+        }
+
+        for (int i = 0; i < EspcTabla.getRowCount(); i++) {
+            modeloTablaEspecialidades.removeRow(i);
+            i = -1;
+        }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void TextNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNIKeyTyped
@@ -463,6 +446,22 @@ public class AdicionarMedico extends javax.swing.JDialog {
     private void TextEspcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextEspcActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextEspcActionPerformed
+
+    private void jTable_SalasHospitalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_SalasHospitalMousePressed
+        String[] datos = new String[1];
+        datos[0] = String.valueOf(jTable_SalasHospital.getValueAt(jTable_SalasHospital.getSelectedRow(), 0));
+        if (!salas.contains(datos[0])) {
+            salas.add(datos[0]);
+            modeloTablaSalasTrabaja.addRow(datos);
+        }
+    }//GEN-LAST:event_jTable_SalasHospitalMousePressed
+
+    private void jTable_SalasTrabajaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_SalasTrabajaMousePressed
+        if (!salas.isEmpty()) {
+            salas.remove(String.valueOf(jTable_SalasTrabaja.getValueAt(jTable_SalasTrabaja.getSelectedRow(), 0)));
+            modeloTablaSalasTrabaja.removeRow(jTable_SalasTrabaja.getSelectedRow());
+        }
+    }//GEN-LAST:event_jTable_SalasTrabajaMousePressed
 
     /**
      * @param args the command line arguments

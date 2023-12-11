@@ -120,86 +120,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 }
             }
         }
-
-        //Fragmento de código para selexionar con el mouse en la tabla
-        jTable_Salas.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent Mouse_evt) {
-                JTable tabla = (JTable) Mouse_evt.getSource();
-                Point paint = Mouse_evt.getPoint();
-                int row = tabla.rowAtPoint(paint);
-                if (Mouse_evt.getClickCount() == 1) {
-                    jLabel_Seleccion_Tabla.setText(String.valueOf(jTable_Salas.getValueAt(jTable_Salas.getSelectedRow(), 0)));
-                }
-            }
-        });
-
-//  Repintar la tabla segun una nueva seleción en el comboBox de las enfermedades
-        jComboBox_Enfermedad.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent event) {
-                if (event.getStateChange() == ItemEvent.SELECTED) {
-                    /*Según la nueva selexión del usuario mostrar todas las
-                     salas con la enfermedad que ha sido selexionada nuevamente
-                     en el comboBox de Enfermedades*/
-                    if (jRadioButton_PacienteEstable.isSelected()) {
-                        DefaultTableModel model = new DefaultTableModel() {
-                            public boolean isCellEditable(int row, int col) {
-                                return false;
-                            }
-                        };;
-                        model.addColumn("Nombre");
-                        model.addColumn("Cantidad de Camas");
-                        model.addColumn("Camas Disponibles");
-                        jTable_Salas.setModel(model);
-                        String[] datos = new String[3];
-                        for (Sala aux : hospital.getSalas()) {
-                            if (aux instanceof SalaTerapia) {
-                            } else {
-                                for (String aux1 : aux.getEnfermedades()) {
-                                    if (aux1.equals(jComboBox_Enfermedad.getSelectedItem())) {
-                                        datos[0] = aux.getNombre();
-                                        datos[1] = String.valueOf(aux.getCantMaximaCamas());
-                                        if (aux.getPacientes() != null) {
-                                            datos[2] = String.valueOf(aux.getCantMaximaCamas() - aux.getPacientes().size());
-                                        } else {
-                                            datos[2] = String.valueOf(aux.getCantMaximaCamas());
-                                        }
-                                        model.addRow(datos);
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        DefaultTableModel model = new DefaultTableModel() {
-                            public boolean isCellEditable(int row, int col) {
-                                return false;
-                            }
-                        };;
-                        model.addColumn("Nombre");
-                        model.addColumn("Tipo de Sala");
-                        model.addColumn("Cantidad de Camas");
-                        model.addColumn("Camas Disponibles");
-                        jTable_Salas.setModel(model);
-                        String[] datos = new String[4];
-                        for (Sala aux : hospital.getSalas()) {
-                            if (aux instanceof SalaTerapia) {
-                                SalaTerapia salaTerapia = (SalaTerapia) aux;
-                                datos[0] = salaTerapia.getNombre();
-                                datos[1] = salaTerapia.getTipoSala();
-                                datos[2] = String.valueOf(salaTerapia.getCantMaximaCamas());
-                                if (aux.getPacientes() != null) {
-                                    datos[3] = String.valueOf(salaTerapia.getCantMaximaCamas() - salaTerapia.getPacientes().size());
-                                } else {
-                                    datos[3] = String.valueOf(salaTerapia.getCantMaximaCamas());
-                                }
-                                model.addRow(datos);
-                            }
-                        }
-                    }
-                }
-            }
-
-        });
-
     }
 
     @SuppressWarnings("unchecked")
@@ -298,6 +218,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jLabel4.setText("Enfermedad:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 90, -1));
 
+        jComboBox_Enfermedad.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox_EnfermedadItemStateChanged(evt);
+            }
+        });
         jPanel1.add(jComboBox_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 190, -1));
 
         txt_TiempoEnfermedad.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -517,6 +442,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable_Salas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTable_SalasMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable_Salas);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, -1, 120));
@@ -892,7 +822,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         boolean chofer;
         Calendar calendario = Calendar.getInstance();
 
-        if (!ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
+        if (txt_Nombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
             flap = false;
             errors = errors + "\n-Nombre";
         }
@@ -922,7 +852,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 errors = errors + "\n-Tiempo estimado de permanencia";
             }
 
-            if (!ValidarCampos.comprobarCamposTexto(txt_Tratamiento.getText())) {
+            if (txt_Tratamiento.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_Tratamiento.getText())) {
                 flap = false;
                 errors = errors + "\n-Tratamiento Posible";
             }
@@ -934,13 +864,13 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 errors = errors + "\n-Tiempo Estimado de Vida";
             }
             if (jRadioButton_Envenenado.isSelected()) {
-                if (!ValidarCampos.comprobarCamposTexto(txt_SustanciaIngerida_Envenenamiento.getText())) {
+                if (txt_SustanciaIngerida_Envenenamiento.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_SustanciaIngerida_Envenenamiento.getText())) {
                     flap = false;
                     errors = errors + "\n-Nombre de la sistancia ingerida. Paciente grave por Envenenamiento";
                 }
             }
             if (jRadioButton_Asfixia.isSelected()) {
-                if (!ValidarCampos.comprobarCamposTexto(txt_SustanciaIngerida_Asfixia.getText())) {
+                if (txt_SustanciaIngerida_Asfixia.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_SustanciaIngerida_Asfixia.getText())) {
                     flap = false;
                     errors = errors + "\n-Nombre de la sustancia ingerida. Paciente grave por Asfixia";
                 }
@@ -954,7 +884,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 }
             }
             if (jRadioButton_Incendio.isSelected()) {
-                if (!ValidarCampos.comprobarCamposTexto(txt_LugarAfectado.getText())) {
+                if (txt_LugarAfectado.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_LugarAfectado.getText())) {
                     flap = false;
                     errors = errors + "\n-Lugar afectado debe ser solamente una cadena de texto";
                 }
@@ -1197,6 +1127,69 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             jPanel_Incendio.setVisible(false);
         }
     }//GEN-LAST:event_jRadioButton_AccidenteActionPerformed
+
+    private void jTable_SalasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_SalasMousePressed
+        jLabel_Seleccion_Tabla.setText(String.valueOf(jTable_Salas.getValueAt(jTable_Salas.getSelectedRow(), 0)));
+    }//GEN-LAST:event_jTable_SalasMousePressed
+
+    private void jComboBox_EnfermedadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_EnfermedadItemStateChanged
+//  Repintar la tabla segun una nueva seleción en el comboBox de las enfermedades
+        if (jRadioButton_PacienteEstable.isSelected()) {
+            DefaultTableModel model = new DefaultTableModel() {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };;
+            model.addColumn("Nombre");
+            model.addColumn("Cantidad de Camas");
+            model.addColumn("Camas Disponibles");
+            jTable_Salas.setModel(model);
+            String[] datos = new String[3];
+            for (Sala aux : hospital.getSalas()) {
+                if (aux instanceof SalaTerapia) {
+                } else {
+                    for (String aux1 : aux.getEnfermedades()) {
+                        if (aux1.equals(jComboBox_Enfermedad.getSelectedItem())) {
+                            datos[0] = aux.getNombre();
+                            datos[1] = String.valueOf(aux.getCantMaximaCamas());
+                            if (aux.getPacientes() != null) {
+                                datos[2] = String.valueOf(aux.getCantMaximaCamas() - aux.getPacientes().size());
+                            } else {
+                                datos[2] = String.valueOf(aux.getCantMaximaCamas());
+                            }
+                            model.addRow(datos);
+                        }
+                    }
+                }
+            }
+        } else {
+            DefaultTableModel model = new DefaultTableModel() {
+                public boolean isCellEditable(int row, int col) {
+                    return false;
+                }
+            };;
+            model.addColumn("Nombre");
+            model.addColumn("Tipo de Sala");
+            model.addColumn("Cantidad de Camas");
+            model.addColumn("Camas Disponibles");
+            jTable_Salas.setModel(model);
+            String[] datos = new String[4];
+            for (Sala aux : hospital.getSalas()) {
+                if (aux instanceof SalaTerapia) {
+                    SalaTerapia salaTerapia = (SalaTerapia) aux;
+                    datos[0] = salaTerapia.getNombre();
+                    datos[1] = salaTerapia.getTipoSala();
+                    datos[2] = String.valueOf(salaTerapia.getCantMaximaCamas());
+                    if (aux.getPacientes() != null) {
+                        datos[3] = String.valueOf(salaTerapia.getCantMaximaCamas() - salaTerapia.getPacientes().size());
+                    } else {
+                        datos[3] = String.valueOf(salaTerapia.getCantMaximaCamas());
+                    }
+                    model.addRow(datos);
+                }
+            }
+        }
+    }//GEN-LAST:event_jComboBox_EnfermedadItemStateChanged
 
     /**
      * @param args the command line arguments

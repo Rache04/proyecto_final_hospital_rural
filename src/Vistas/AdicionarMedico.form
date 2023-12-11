@@ -170,6 +170,9 @@
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_SalasHospitalMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -191,6 +194,9 @@
                   </Table>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTable_SalasTrabajaMousePressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
