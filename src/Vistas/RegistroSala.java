@@ -6,30 +6,71 @@
 
 package Vistas;
 
+import controllers.HospitalRural;
 import interfaces.IHospitalRural;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import models.Medico;
+import models.Sala;
+import models.SalaTerapia;
 
 /**
  *
  * @author Gabriel
  */
 public class RegistroSala extends javax.swing.JDialog {
-    DefaultTableModel modeloTablaSala = new DefaultTableModel();
+    DefaultTableModel modeloTablaSala = new DefaultTableModel(){
+        public boolean isCellEditable(int row, int col) {
+            return false;
+        }
+    };
 
-    /**
-     * Creates new form RegistroSala
-     */
-    public RegistroSala(java.awt.Frame parent, boolean modal) {
+private HospitalRural hospital;
+
+    public RegistroSala(java.awt.Frame parent, boolean modal, HospitalRural hospital) {
         super(parent, modal);
         initComponents();
+        setTitle("Registro de Salas");
+        setLocationRelativeTo(null);
+        setResizable(false);
+        this.hospital = hospital;
         
         modeloTablaSala.addColumn("Nombre");
-        modeloTablaSala.addColumn("Terapia");
+        modeloTablaSala.addColumn("Tipo de Sala");
         modeloTablaSala.addColumn("Acompañante");
-        modeloTablaSala.addColumn("Terapia");
         modeloTablaSala.addColumn("Máximo de camas");
-        modeloTablaSala.addColumn("Enfermedades");
+        modeloTablaSala.addColumn("Camas ocupadas");
+        modeloTablaSala.addColumn("Médicos Trabajan");
         jTable1.setModel(modeloTablaSala);
+        
+        for(Sala aux : hospital.getSalas()){
+            String[] datos = new String[6];
+            datos[0] = aux.getNombre();
+            if (aux instanceof SalaTerapia) {
+                SalaTerapia st = (SalaTerapia) aux;
+                datos[1] = st.getTipoSala();
+                if (st.isCompanion()) {
+                    datos[2] = "Si";
+                }else{
+                    datos[2] = "No";
+                }
+            }else{
+                datos[1] = "Normal";
+                datos[2] = "Si";
+            }
+            datos[3] = String.valueOf(aux.getCantMaximaCamas());
+//            datos[4] = String.valueOf(aux.getPacientes().size());
+            
+            List<Medico> medicos = new ArrayList<>();
+            for(Medico aux1 : hospital.getMedicos()){
+                if (aux1.getSalas().contains(aux)) {
+                    medicos.add(aux1);
+                }
+            }
+            datos[5] = String.valueOf(medicos.size());
+            modeloTablaSala.addRow(datos);
+        }
     }
 
     RegistroSala(IHospitalRural hospital) {
@@ -153,7 +194,7 @@ public class RegistroSala extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                RegistroSala dialog = new RegistroSala(new javax.swing.JFrame(), true);
+                RegistroSala dialog = new RegistroSala(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
