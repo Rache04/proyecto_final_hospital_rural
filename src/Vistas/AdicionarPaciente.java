@@ -277,7 +277,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoMesKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 30, 20));
+        jPanel1.add(txt_NacimientoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 30, 20));
 
         txt_NacimientoYeard.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_NacimientoYeard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -291,7 +291,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoYeardKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoYeard, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 30, 20));
+        jPanel1.add(txt_NacimientoYeard, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 40, 20));
 
         txt_NacimientoDia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_NacimientoDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -305,7 +305,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoDiaKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 30, 20));
+        jPanel1.add(txt_NacimientoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 30, 20));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Mes");
@@ -826,10 +826,13 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             flap = false;
             errors = errors + "\n-Nombre";
         }
-
+        
         if (!ValidarCampos.comprobarCamposNumericos(txt_NacimientoYeard.getText())
                 || !ValidarCampos.comprobarCamposNumericos(txt_NacimientoMes.getText())
-                || !ValidarCampos.comprobarCamposNumericos(txt_NacimientoDia.getText())) {
+                || !ValidarCampos.comprobarCamposNumericos(txt_NacimientoDia.getText())
+                || Integer.parseInt(txt_NacimientoYeard.getText()) > calendario.get(Calendar.YEAR) || Integer.parseInt(txt_NacimientoYeard.getText()) < 1900
+                || Integer.parseInt(txt_NacimientoMes.getText()) > 12
+                || Integer.parseInt(txt_NacimientoDia.getText()) > 31) {
             flap = false;
             errors = errors + "\n-Fecha de Nacimiento";
         }
@@ -1050,7 +1053,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_NacimientoMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NacimientoMesKeyTyped
         char c = evt.getKeyChar();
-        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c)) || txt_NacimientoMes.getText().length() > 1) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_NacimientoMesKeyTyped
@@ -1061,7 +1064,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_NacimientoYeardKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NacimientoYeardKeyTyped
         char c = evt.getKeyChar();
-        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c)) || txt_NacimientoYeard.getText().length() > 3) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_NacimientoYeardKeyTyped
@@ -1072,7 +1075,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void txt_NacimientoDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NacimientoDiaKeyTyped
         char c = evt.getKeyChar();
-        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c))) {
+        if (!ValidarCampos.comprobarCamposNumericos(String.valueOf(c)) || txt_NacimientoDia.getText().length() > 1) {
             evt.consume();
         }
     }//GEN-LAST:event_txt_NacimientoDiaKeyTyped
