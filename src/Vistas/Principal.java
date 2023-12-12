@@ -284,12 +284,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-     
+     RegistroSala sal = new RegistroSala (this, rootPaneCheckingEnabled, (HospitalRural) hospital);
+     sal.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        RegistroMedico medic = new RegistroMedico(this, true);
+        RegistroMedico medic = new RegistroMedico (this, rootPaneCheckingEnabled, (HospitalRural) hospital);
         medic.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
