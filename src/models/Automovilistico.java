@@ -11,7 +11,7 @@ package models;
  * @author Rachel
  */
 public class Automovilistico extends PacienteGrave {
-    private boolean chofer;
+    protected boolean chofer;
 
     public Automovilistico(boolean chofer, int tiempoEstimadoVida, String causa, String ci, String nombreCompleto,
             String fechaNacimiento, String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {

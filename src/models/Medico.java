@@ -13,10 +13,10 @@ import java.util.ArrayList;
  * @author Rachel
  */
 public class Medico {
-    private String nombre;
-    private String ci;
-    private ArrayList<String> especialidades;
-    private ArrayList<Sala> salas;
+    protected String nombre;
+    protected String ci;
+    protected ArrayList<String> especialidades;
+    protected ArrayList<Sala> salas;
 
     public Medico(String nombre, String ci, ArrayList<String> especialidades, ArrayList<Sala> salas) {
         this.nombre = nombre;

@@ -11,9 +11,9 @@ package models;
  * @author Rachel
  */
 public class Asfixia extends PacienteGrave {
-    private boolean sustanciaToxica;
-    private String nombreSustancia;
-    private boolean faltaOxigeno;
+    protected boolean sustanciaToxica;
+    protected String nombreSustancia;
+    protected boolean faltaOxigeno;
 
     public Asfixia(String nombreSustancia, boolean faltaOxigeno, int tiempoEstimadoVida, boolean sustanciaToxica, String ci,
             String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso,
