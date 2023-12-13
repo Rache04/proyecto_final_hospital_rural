@@ -1,6 +1,11 @@
 
 package Vistas;
 
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
 public class ValidarCampos {
     public static boolean comprobarCamposTexto(String a){
         for(char c : a.toCharArray()){
@@ -29,6 +34,21 @@ public class ValidarCampos {
             return true;
         }else{
             return false;
+        }
+    }
+    
+    public static void cleardField(JTextField txt){
+        txt.setText("");
+    }
+    public static void cleardField(JComboBox combo, String texto){
+        combo.setSelectedItem(texto);
+    }
+    public static void cleardField(JCheckBox check, boolean set){
+        check.setSelected(set);
+    }
+    public static void cleardField(DefaultTableModel model){
+        while (model.getRowCount() > 0) {
+            model.removeRow(0);
         }
     }
 }
