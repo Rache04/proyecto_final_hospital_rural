@@ -15,7 +15,7 @@ public interface IHospitalRural {
     boolean crearSala(Sala sala);
 
     
-    boolean addPaciente(Paciente paciente, Sala sala);
+    boolean addPaciente(Paciente paciente, Sala sala) throws NullPointerException;
 
     // funciona
     boolean addEnfermedadSala(String enfermedad, Sala sala);
