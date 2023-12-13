@@ -1,6 +1,7 @@
 
 package Vistas;
 
+import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -50,5 +51,8 @@ public class ValidarCampos {
         while (model.getRowCount() > 0) {
             model.removeRow(0);
         }
+    }
+    public static void cleardField(List<String> str){
+        str.clear();
     }
 }

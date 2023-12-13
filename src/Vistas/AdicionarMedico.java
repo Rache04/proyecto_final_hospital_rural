@@ -346,6 +346,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
                 validar = validar + "\n-Ya existe un médico con el numero de carnet: " + TextNI.getText() + " registrado en el sistema";
             }
         }
+        // Si los campos ueron validados correctamente se ingresa al nuevo medico
         if (flap) {
             ArrayList<Sala> salaAux = new ArrayList<>();
             for (Sala aux : hospital.getSalas()) {
@@ -356,6 +357,15 @@ public class AdicionarMedico extends javax.swing.JDialog {
             Medico medico = new Medico(TextNombre.getText(), TextNI.getText(), especialidades, salaAux);
             this.hospital.addMedico(medico);
             JOptionPane.showMessageDialog(null, "Se ha añadido correctamente al médico: " + TextNombre.getText());
+
+            // Limpiar campos luego de agregar un paciente al sistema
+            ValidarCampos.cleardField(TextEspc);
+            ValidarCampos.cleardField(TextNI);
+            ValidarCampos.cleardField(TextNombre);
+            ValidarCampos.cleardField(modeloTablaEspecialidades);
+            ValidarCampos.cleardField(modeloTablaSalasTrabaja);
+            ValidarCampos.cleardField(especialidades);
+            ValidarCampos.cleardField(salas);
         } else {
             JOptionPane.showMessageDialog(null, "Verifique los siguientes campos que presentan errores:" + validar);
         }
@@ -389,21 +399,14 @@ public class AdicionarMedico extends javax.swing.JDialog {
     }//GEN-LAST:event_ElimEspcActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        TextNombre.setText("");
-        TextNI.setText("");
-        TextEspc.setText("");
-
-        for (int i = 0; i < jTable_SalasTrabaja.getRowCount(); i++) {
-            modeloTablaSalasTrabaja.removeRow(i);
-            i = -1;
-        }
-
-        for (int i = 0; i < EspcTabla.getRowCount(); i++) {
-            modeloTablaEspecialidades.removeRow(i);
-            i = -1;
-        }
-
+        // Limpiar todos los campos del formulario
+        ValidarCampos.cleardField(TextEspc);
+        ValidarCampos.cleardField(TextNI);
+        ValidarCampos.cleardField(TextNombre);
+        ValidarCampos.cleardField(modeloTablaEspecialidades);
+        ValidarCampos.cleardField(modeloTablaSalasTrabaja);
+        ValidarCampos.cleardField(especialidades);
+        ValidarCampos.cleardField(salas);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void TextNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextNIKeyTyped
