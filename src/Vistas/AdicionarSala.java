@@ -400,16 +400,24 @@ public class AdicionarSala extends javax.swing.JDialog {
             }
 
             if (jRadioButton_SalaTerapia_No.isSelected()) {
-                Sala sala = new Sala(txt_Nombre.getText(), this.enfermedades, ValidarCampos.convertirEntero(txt_CantidadCamas.getText()), null);
+                Sala sala = new Sala(txt_Nombre.getText(), this.enfermedades, ValidarCampos.convertirEntero(txt_CantidadCamas.getText()), new ArrayList<>());
                 this.hospital.crearSala(sala);
                 JOptionPane.showMessageDialog(null, "La sala ha sido creada satisfactoriamente");
 
             } else {
 //              Adicionar una nueva Sala médica de terapia intenciva
-                Sala salaTerapia = new SalaTerapia(tipoSala, acompanante, txt_NombreDirector.getText(), txt_Nombre.getText(), this.enfermedades, ValidarCampos.convertirEntero(txt_CantidadCamas.getText()), null);
+                Sala salaTerapia = new SalaTerapia(tipoSala, acompanante, txt_NombreDirector.getText(), txt_Nombre.getText(), this.enfermedades, ValidarCampos.convertirEntero(txt_CantidadCamas.getText()), new ArrayList<>());
                 this.hospital.crearSala(salaTerapia);
                 JOptionPane.showMessageDialog(null, "La sala ha sido creada satisfactoriamente");
             }
+
+            // Limpiar campos luego de agregar sala al sistema
+            ValidarCampos.cleardField(txt_Nombre);
+            ValidarCampos.cleardField(txt_NombreDirector);
+            ValidarCampos.cleardField(txt_Enfermedad);
+            ValidarCampos.cleardField(txt_CantidadCamas);
+            ValidarCampos.cleardField(model);
+
         } else {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error. Verifique los siguientes campos:" + validacion);
         }
@@ -473,15 +481,11 @@ public class AdicionarSala extends javax.swing.JDialog {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        txt_Nombre.setText("");
-        txt_Enfermedad.setText("");
-        txt_NombreDirector.setText("");
-        txt_CantidadCamas.setText("");
-
-        for (int i = 0; i < jTable_Enfermedades.getRowCount(); i++) {
-            model.removeRow(i);
-            i = -1;
-        }
+        ValidarCampos.cleardField(txt_Nombre);
+        ValidarCampos.cleardField(txt_NombreDirector);
+        ValidarCampos.cleardField(txt_Enfermedad);
+        ValidarCampos.cleardField(txt_CantidadCamas);
+        ValidarCampos.cleardField(model);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable_EnfermedadesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable_EnfermedadesMousePressed

@@ -18,6 +18,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.Asfixia;
 import models.Automovilistico;
+import models.Envenenamiento;
+import models.Incendio;
 import models.Paciente;
 import models.PacienteEstable;
 import models.PacienteGrave;
@@ -744,8 +746,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jLabel15.setVisible(false);
         txt_TiempoEnfermedad.setVisible(false);
         txt_Tratamiento.setVisible(false);
-        jLabel20.setVisible(false);
-        txt_TiempoEstimadoPermanencia.setVisible(false);
         jLabel21.setVisible(true);
         txt_TiempoEstimadoVida.setVisible(true);
         if (jRadioButton_Accidente.isSelected()) {
@@ -820,13 +820,22 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         String errors = "Error al ingresar paciente. Conprueve los siguientes campos:";
         String causa;
         boolean chofer;
+        boolean envenenado;
+        boolean sustanciaToxica;
+        boolean faltaOxigeno;
         Calendar calendario = Calendar.getInstance();
 
+        // Validación de campos
         if (txt_Nombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
             flap = false;
             errors = errors + "\n-Nombre";
         }
-        
+
+        if (!ValidarCampos.comprobarCamposNumericos(txt_TiempoEstimadoPermanencia.getText())) {
+            flap = false;
+            errors = errors + "\n-Tiempo estimado de permanencia";
+        }
+
         if (!ValidarCampos.comprobarCamposNumericos(txt_NacimientoYeard.getText())
                 || !ValidarCampos.comprobarCamposNumericos(txt_NacimientoMes.getText())
                 || !ValidarCampos.comprobarCamposNumericos(txt_NacimientoDia.getText())
@@ -847,12 +856,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             if (!ValidarCampos.comprobarCamposNumericos(txt_TiempoEnfermedad.getText())) {
                 flap = false;
                 errors = errors + "\n-Tiempo de detectada la enfermedad";
-            }
-
-            if (!txt_Tratamiento.getText().equals("")
-                    || !ValidarCampos.comprobarCamposNumericos(txt_TiempoEstimadoPermanencia.getText())) {
-                flap = false;
-                errors = errors + "\n-Tiempo estimado de permanencia";
             }
 
             if (txt_Tratamiento.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_Tratamiento.getText())) {
@@ -908,6 +911,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 }
             }
         }
+        // Asignar valores boolean segun la seleción en los jRadioButons
         if (jRadioButton_CausaNatural.isSelected()) {
             causa = jRadioButton_CausaNatural.getText();
         } else {
@@ -918,8 +922,24 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         } else {
             chofer = false;
         }
+        if (jRadioButton_Envenenado_Si.isSelected()) {
+            envenenado = true;
+        } else {
+            envenenado = false;
+        }
+        if (jRadioButton_FaltaOxigeno_SI.isSelected()) {
+            faltaOxigeno = true;
+        } else {
+            faltaOxigeno = false;
+        }
+        if (jRadioButton_SustanciaToxica_SI.isSelected()) {
+            sustanciaToxica = true;
+        } else {
+            sustanciaToxica = false;
+        }
 
         if (flap) {
+            // Agregar paciente si el paciente es un paciente grave que sufrio un accidente automovilistico
             if (jRadioButton_PacienteGrave.isSelected() && jRadioButton_Automovilistico.isSelected()) {
                 Paciente paciente = new Automovilistico(chofer, Integer.parseInt(txt_TiempoEstimadoVida.getText()),
                         causa, txt_CarnetiIdentidad.getText(), txt_Nombre.getText(),
@@ -928,34 +948,79 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                         calendario.get(Calendar.DAY_OF_MONTH) + "-" + calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.YEAR),
                         Integer.parseInt(txt_TiempoEstimadoVida.getText()));
 
-                for (Sala aux : this.hospital.getSalas()) {
-                    if (aux.getNombre().equals(jLabel_Seleccion_Tabla.getText())) {
-                        this.hospital.addPaciente(paciente, aux);
-                    }
-                }
+                this.hospital.addPaciente(paciente, ValidarCampos.buscarSalaPorNombre(jLabel_Seleccion_Tabla.getText(), (HospitalRural) hospital));
+
+                // Agregar paciente si el paciente es un paciente grave que sufrio un accidente enevnenaniento
+            } else if (jRadioButton_PacienteGrave.isSelected() && jRadioButton_Envenenado.isSelected()) {
+                Paciente paciente = new Envenenamiento(txt_SustanciaIngerida_Envenenamiento.getText(), envenenado, ValidarCampos.convertirEntero(txt_TiempoEstimadoVida.getText()), causa, txt_CarnetiIdentidad.getText(), txt_Nombre.getText(),
+                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
+                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
+                        calendario.get(Calendar.DAY_OF_MONTH) + "-" + calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.YEAR),
+                        Integer.parseInt(txt_TiempoEstimadoVida.getText()));
+
+                this.hospital.addPaciente(paciente, ValidarCampos.buscarSalaPorNombre(jLabel_Seleccion_Tabla.getText(), (HospitalRural) hospital));
+            
+                // Agregagr paciente si el paciente es un pacientegrave que sufrio un accidente asfixia
+            } else if (jRadioButton_PacienteGrave.isSelected() && jRadioButton_Asfixia.isSelected()) {
+                Paciente paciente = new Asfixia(txt_SustanciaIngerida_Asfixia.getText(), faltaOxigeno, Integer.parseInt(txt_TiempoEstimadoVida.getText()),
+                        sustanciaToxica, txt_CarnetiIdentidad.getText(), txt_Nombre.getText(),
+                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
+                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
+                        calendario.get(Calendar.DAY_OF_MONTH) + "-" + calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.YEAR),
+                        Integer.parseInt(txt_TiempoEstimadoPermanencia.getText()), causa);
+
+                this.hospital.addPaciente(paciente, ValidarCampos.buscarSalaPorNombre(jLabel_Seleccion_Tabla.getText(), (HospitalRural) hospital));
+            } else if (jRadioButton_PacienteGrave.isSelected() && jRadioButton_Incendio.isSelected()) {
+                Paciente paciente = new Incendio(Integer.parseInt(txt_GradoQuemadura.getText()), txt_LugarAfectado.getText(),
+                        Integer.parseInt(txt_TiempoEstimadoVida.getText()), causa, txt_CarnetiIdentidad.getText(),
+                        txt_Nombre.getText(), 
+                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
+                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()), 
+                        calendario.get(Calendar.DAY_OF_MONTH) + "-" + calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.YEAR),
+                        Integer.parseInt(txt_TiempoEstimadoPermanencia.getText()));
+                
+                this.hospital.addPaciente(paciente, ValidarCampos.buscarSalaPorNombre(jLabel_Seleccion_Tabla.getText(), (HospitalRural) hospital));
+                // Agregar pacientegrave por causas naturales
+            }else if (jRadioButton_PacienteGrave.isSelected()) {
+                Paciente paciente = new PacienteGrave(Integer.parseInt(txt_TiempoEstimadoPermanencia.getText()),
+                        causa, txt_CarnetiIdentidad.getText(), 
+                        txt_Nombre.getText(),
+                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
+                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()), 
+                        calendario.get(Calendar.DAY_OF_MONTH) + "-" + calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.YEAR),
+                        Integer.parseInt(txt_TiempoEstimadoPermanencia.getText()));
+                
+                this.hospital.addPaciente(paciente, ValidarCampos.buscarSalaPorNombre(jLabel_Seleccion_Tabla.getText(), (HospitalRural) hospital));
+                // Agregar paciente estable
+            }else {
+                Paciente paciente = new PacienteEstable(Integer.parseInt(txt_TiempoEnfermedad.getText()),
+                        txt_Tratamiento.getText(), 
+                        txt_CarnetiIdentidad.getText(), txt_Nombre.getText(), 
+                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
+                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
+                        calendario.get(Calendar.DAY_OF_MONTH) + "-" + calendario.get(Calendar.MONTH) + "-" + calendario.get(Calendar.YEAR),
+                        Integer.parseInt(txt_TiempoEstimadoPermanencia.getText()));
+                
+                this.hospital.addPaciente(paciente, ValidarCampos.buscarSalaPorNombre(jLabel_Seleccion_Tabla.getText(), (HospitalRural) hospital));
             }
-//            if (jRadioButton_PacienteEstable.isSelected()) {
-////                LocalDateTime fechaHoraActual = LocalDateTime.now();
-////                Paciente paciente = new PacienteEstable(ValidarCampos.convertirEntero(txt_TiempoEnfermedad.getText()),
-////                        txt_Tratamiento.getText(), txt_CarnetiIdentidad.getText(), txt_Nombre.getText(),
-////                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes + "-" + txt_NacimientoYeard,
-////                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
-////                        fechaHoraActual.getDayOfMonth() + "-" + fechaHoraActual.getMonthValue() + "-" + fechaHoraActual.getYear(),
-////                        ValidarCampos.convertirEntero(txt_TiempoEstimadoPermanencia.getText()));
-////                this.hospital.addPaciente(paciente);
-////              this.hospital.getSalas().add(null)
-//            } else {
-////                LocalDateTime fechaHoraActual = LocalDateTime.now();
-////                Paciente paciente = new PacienteGrave(ValidarCampos.convertirEntero(txt_TiempoEstimadoVida.getText()),
-////                        causa, txt_CarnetiIdentidad.getText(),
-////                        txt_Nombre.getText(), 
-////                        txt_NacimientoDia.getText() + "-" + txt_NacimientoMes.getText() + "-" + txt_NacimientoYeard.getText(),
-////                        String.valueOf(jComboBox_Enfermedad.getSelectedItem()),
-////                        fechaHoraActual.getDayOfMonth() + "-" + fechaHoraActual.getMonthValue() + "-" + fechaHoraActual.getYear(),
-////                        ValidarCampos.convertirEntero(txt_TiempoEstimadoPermanencia.getText()));
-////                this.hospital.addPaciente(paciente);
-////              this.hospital.getSalas().add(null)              
-//            }
+
+            JOptionPane.showMessageDialog(null, "El Paciente " + txt_Nombre.getText() + " ha sido agregado al sistema");
+            // Limpiar campos luego de agregar un paciente
+            ValidarCampos.cleardField(txt_CarnetiIdentidad);
+            ValidarCampos.cleardField(txt_GradoQuemadura);
+            ValidarCampos.cleardField(txt_LugarAfectado);
+            ValidarCampos.cleardField(txt_NacimientoDia);
+            ValidarCampos.cleardField(txt_NacimientoDia);
+            ValidarCampos.cleardField(txt_NacimientoMes);
+            ValidarCampos.cleardField(txt_NacimientoYeard);
+            ValidarCampos.cleardField(txt_Nombre);
+            ValidarCampos.cleardField(txt_SustanciaIngerida_Asfixia);
+            ValidarCampos.cleardField(txt_SustanciaIngerida_Envenenamiento);
+            ValidarCampos.cleardField(txt_TiempoEnfermedad);
+            ValidarCampos.cleardField(txt_TiempoEstimadoPermanencia);
+            ValidarCampos.cleardField(txt_TiempoEstimadoVida);
+            ValidarCampos.cleardField(txt_Tratamiento);
+
         } else {
             JOptionPane.showMessageDialog(null, errors);
         }
