@@ -11,6 +11,7 @@ import models.SalaTerapia;
 public class Principal extends javax.swing.JFrame {
 
     private IHospitalRural hospital;
+    private Sala sala;
 
     public Principal() {
         this.hospital = new HospitalRural(new ArrayList<Medico>(), new ArrayList<Sala>());
@@ -309,6 +310,12 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
+        if (sala.getPacientes().isEmpty()){
+            RegistroPaciente paciente = new RegistroPaciente(this, rootPaneCheckingEnabled, (HospitalRural) hospital);
+            paciente.setVisible(true);
+            }else{
+            JOptionPane.showMessageDialog(null, "No hay pacientes registrados en el sistema");
+        } 
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
