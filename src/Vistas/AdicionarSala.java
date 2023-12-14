@@ -363,20 +363,35 @@ public class AdicionarSala extends javax.swing.JDialog {
             }
         }
 
-        if (!ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
-            flap = false;
-            validacion = validacion + "\n-Nombre";
-        }
-        if (jRadioButton_SalaTerapia_Si.isSelected()) {
-            if (!ValidarCampos.comprobarCamposTexto(txt_NombreDirector.getText())) {
+        try {
+            if (!ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
                 flap = false;
-                validacion = validacion + "\n-Nombre del Director";
+                validacion = validacion + "\n-Nombre";
             }
-        }
-        if (!ValidarCampos.comprobarCamposNumericos(txt_CantidadCamas.getText())
-                || ValidarCampos.convertirEntero(txt_CantidadCamas.getText()) == 0) {
+        } catch (NullPointerException e) {
             flap = false;
-            validacion = validacion + "\n-Cantidad Máxima de camas";
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al Valodar el campo de Nombre del Paciente contacte al administrador: " + e);
+        }
+        try {
+            if (jRadioButton_SalaTerapia_Si.isSelected()) {
+                if (!ValidarCampos.comprobarCamposTexto(txt_NombreDirector.getText())) {
+                    flap = false;
+                    validacion = validacion + "\n-Nombre del Director";
+                }
+            }
+        } catch (NullPointerException e) {
+            flap = false;
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al Validar el campo de Nombre del Director contacte al administrador: " + e);
+        }
+        try {
+            if (!ValidarCampos.comprobarCamposNumericos(txt_CantidadCamas.getText())
+                    || ValidarCampos.convertirEntero(txt_CantidadCamas.getText()) == 0) {
+                flap = false;
+                validacion = validacion + "\n-Cantidad Máxima de camas";
+            }
+        } catch (NullPointerException | NumberFormatException e) {
+            flap = false;
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al Validar el campo de Cantidad máxima de camas contacte al administrador: " + e);
         }
         if (this.enfermedades.size() <= 0) {
             flap = false;

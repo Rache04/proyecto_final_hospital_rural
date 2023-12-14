@@ -326,13 +326,23 @@ public class AdicionarMedico extends javax.swing.JDialog {
         String validar = "";
         boolean flap = true;
 
-        if (TextNombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(TextNombre.getText())) {
+        try {
+            if (TextNombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(TextNombre.getText())) {
+                flap = false;
+                validar = validar + "\n-Nombre del médico";
+            }
+        } catch (NullPointerException e) {
             flap = false;
-            validar = validar + "\n-Nombre del médico";
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al validar el campo de Nombre Completo contaqcte al administrador: " + e);
         }
-        if (!ValidarCampos.comprobarCamposNumericos(TextNI.getText()) || TextNI.getText().length() != 11) {
+        try {
+            if (!ValidarCampos.comprobarCamposNumericos(TextNI.getText()) || TextNI.getText().length() != 11) {
+                flap = false;
+                validar = validar + "\n-Número de identidad";
+            }
+        } catch (NullPointerException e) {
             flap = false;
-            validar = validar + "\n-Número de identidad";
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error al validar el campo de Número de Identidad contacte al administrador: " + e);
         }
 
         if (salas.isEmpty()) {

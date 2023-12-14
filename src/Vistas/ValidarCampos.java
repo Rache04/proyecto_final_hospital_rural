@@ -10,7 +10,7 @@ import models.Sala;
 
 public class ValidarCampos {
 
-    public static boolean comprobarCamposTexto(String a) {
+    public static boolean comprobarCamposTexto(String a) throws NullPointerException{
         for (char c : a.toCharArray()) {
             if (!Character.isWhitespace(c) && !Character.isLetter(c)) {
                 return false;
@@ -19,7 +19,7 @@ public class ValidarCampos {
         return true;
     }
 
-    public static boolean comprobarCamposNumericos(String a) {
+    public static boolean comprobarCamposNumericos(String a) throws NullPointerException{
         if (a.matches("^[0-9]+$")) {
             return true;
         } else {
@@ -27,12 +27,12 @@ public class ValidarCampos {
         }
     }
 
-    public static int convertirEntero(String a) {
+    public static int convertirEntero(String a) throws NumberFormatException{
         int aux = Integer.parseInt(a);
         return aux;
     }
 
-    public static boolean rangoNumero(int numero, int desde, int hasta) {
+    public static boolean rangoNumero(int numero, int desde, int hasta) throws NullPointerException, NumberFormatException{
         if (desde >= numero || numero <= hasta) {
             return true;
         } else {
