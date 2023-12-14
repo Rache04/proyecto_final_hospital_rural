@@ -12,7 +12,7 @@ public interface IHospitalRural {
     ArrayList<Sala> getSalas();
 
     // funcion
-    boolean crearSala(Sala sala);
+    boolean addSala(Sala sala);
 
     
     boolean addPaciente(Paciente paciente, Sala sala) throws NullPointerException;

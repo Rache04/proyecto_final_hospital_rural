@@ -35,11 +35,11 @@ public class Principal extends javax.swing.JFrame {
         Sala s3 = new SalaTerapia("Intenciva", true, "Juan Alverto", "Extrangería", enfermedades, 23, new ArrayList<>());
         Sala s4 = new Sala("Emergencias", enfermedades1, 400, new ArrayList<>());
         Sala s5 = new SalaTerapia("Intenciva", true, "ElPEPE", "MorgeXD", enfermedades1, 80, new ArrayList<>());
-        this.hospital.crearSala(s1);
-        this.hospital.crearSala(s2);
-        this.hospital.crearSala(s3);
-        this.hospital.crearSala(s4);
-        this.hospital.crearSala(s5);
+        this.hospital.addSala(s1);
+        this.hospital.addSala(s2);
+        this.hospital.addSala(s3);
+        this.hospital.addSala(s4);
+        this.hospital.addSala(s5);
     }
 
     /**

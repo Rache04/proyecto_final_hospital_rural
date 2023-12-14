@@ -416,13 +416,13 @@ public class AdicionarSala extends javax.swing.JDialog {
 
             if (jRadioButton_SalaTerapia_No.isSelected()) {
                 Sala sala = new Sala(txt_Nombre.getText(), this.enfermedades, ValidarCampos.convertirEntero(txt_CantidadCamas.getText()), new ArrayList<>());
-                this.hospital.crearSala(sala);
+                this.hospital.addSala(sala);
                 JOptionPane.showMessageDialog(null, "La sala ha sido creada satisfactoriamente");
 
             } else {
 //              Adicionar una nueva Sala médica de terapia intenciva
                 Sala salaTerapia = new SalaTerapia(tipoSala, acompanante, txt_NombreDirector.getText(), txt_Nombre.getText(), this.enfermedades, ValidarCampos.convertirEntero(txt_CantidadCamas.getText()), new ArrayList<>());
-                this.hospital.crearSala(salaTerapia);
+                this.hospital.addSala(salaTerapia);
                 JOptionPane.showMessageDialog(null, "La sala ha sido creada satisfactoriamente");
             }
 

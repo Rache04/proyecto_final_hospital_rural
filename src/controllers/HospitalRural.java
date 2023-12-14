@@ -81,7 +81,7 @@ public class HospitalRural implements IHospitalRural {
     }
 
     @Override
-    public boolean crearSala(Sala sala) {
+    public boolean addSala(Sala sala) {
         return salas.add(sala);
     }
 
