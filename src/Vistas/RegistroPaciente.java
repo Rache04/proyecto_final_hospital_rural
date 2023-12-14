@@ -46,7 +46,7 @@ public class RegistroPaciente extends javax.swing.JDialog {
         modeloTablaPaciente.addColumn("NI");
         modeloTablaPaciente.addColumn("Fecha nacimiento");
         modeloTablaPaciente.addColumn("Enfermedad");
-        modeloTablaPaciente.addColumn("Fecha de ingreso");
+        modeloTablaPaciente.addColumn("Estado");
         modeloTablaPaciente.addColumn("Tiempo de permanencia");
         jTable1.setModel(modeloTablaPaciente);
 
@@ -57,12 +57,14 @@ public class RegistroPaciente extends javax.swing.JDialog {
                 relleno[1] = elemento.getCi();
                 relleno[2] = elemento.getFechaNacimiento();
                 relleno[3] = elemento.getEnfermedad();
-                relleno[4] = elemento.getFechaIngreso();
+                relleno[4] = hospital.conocerEstadoPaciente(elemento.getCi());
                 relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
                 modeloTablaPaciente.addRow(relleno);
             }
 
         }
+        
+        jLabel_PacientesGreves.setText(String.valueOf(hospital.cantPacientesGraves()));
     }
 
     /**
@@ -85,7 +87,6 @@ public class RegistroPaciente extends javax.swing.JDialog {
         txt_CarnetIdentidadMedico = new javax.swing.JTextField();
         txt_CarnetDeIdentidadPaciente = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         txt_TrasladoPaciente = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -93,6 +94,8 @@ public class RegistroPaciente extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel_PacientesGreves = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -158,8 +161,6 @@ public class RegistroPaciente extends javax.swing.JDialog {
             }
         });
 
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-
         jButton4.setText("Trasladar paciente");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +193,14 @@ public class RegistroPaciente extends javax.swing.JDialog {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Sala:");
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Pacientes Graves: ");
+
+        jLabel_PacientesGreves.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel_PacientesGreves.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_PacientesGreves.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -214,10 +223,12 @@ public class RegistroPaciente extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel_PacientesGreves, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -260,10 +271,12 @@ public class RegistroPaciente extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addGap(8, 8, 8)
+                                .addGap(3, 3, 3)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txt_trasladarSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_PacientesGreves, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txt_CarnetIdentidadMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -274,9 +287,7 @@ public class RegistroPaciente extends javax.swing.JDialog {
                                 .addGap(22, 22, 22))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -362,7 +373,7 @@ public class RegistroPaciente extends javax.swing.JDialog {
                     relleno[1] = elemento.getCi();
                     relleno[2] = elemento.getFechaNacimiento();
                     relleno[3] = elemento.getEnfermedad();
-                    relleno[4] = elemento.getFechaIngreso();
+                    relleno[4] = hospital.conocerEstadoPaciente(elemento.getCi());
                     relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
                     modeloTablaPaciente.addRow(relleno);
                 }
@@ -394,7 +405,7 @@ public class RegistroPaciente extends javax.swing.JDialog {
             relleno[1] = elemento.getCi();
             relleno[2] = elemento.getFechaNacimiento();
             relleno[3] = elemento.getEnfermedad();
-            relleno[4] = elemento.getFechaIngreso();
+            relleno[4] = hospital.conocerEstadoPaciente(elemento.getCi());
             relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
             modeloTablaPaciente.addRow(relleno);
         }
@@ -500,14 +511,15 @@ public class RegistroPaciente extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel_PacienteSelecionado;
+    private javax.swing.JLabel jLabel_PacientesGreves;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
