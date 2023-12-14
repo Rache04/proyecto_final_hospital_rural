@@ -1,6 +1,7 @@
 package Vistas;
 
 import controllers.HospitalRural;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -69,5 +70,15 @@ public class ValidarCampos {
             }
         }
         return null;
+    }
+    
+    public static List<Sala> filterSalas(List<Sala> filterSala, String a){
+        List<Sala> filterList = new ArrayList<>();
+        for(Sala aux : filterSala){
+            if (aux.getNombre().toLowerCase().contains(a)) {
+                filterList.add(aux);
+            }
+        }
+        return filterList;
     }
 }

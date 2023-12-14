@@ -30,11 +30,11 @@ public class Principal extends javax.swing.JFrame {
         enfermedades1.add("Loco");
         enfermedades1.add("Catarro");
 
-        Sala s1 = new Sala("Quemado", enfermedades, 15, null);
-        Sala s2 = new Sala("Operaciones", enfermedades1, 10, null);
-        Sala s3 = new SalaTerapia("Intenciva", true, "Juan Alverto", "Extrangería", enfermedades, 23, null);
-        Sala s4 = new Sala("Emergencias", enfermedades1, 400, null);
-        Sala s5 = new SalaTerapia("Intenciva", true, "ElPEPE", "MorgeXD", enfermedades1, 80, null);
+        Sala s1 = new Sala("Quemado", enfermedades, 15, new ArrayList<>());
+        Sala s2 = new Sala("Operaciones", enfermedades1, 10, new ArrayList<>());
+        Sala s3 = new SalaTerapia("Intenciva", true, "Juan Alverto", "Extrangería", enfermedades, 23, new ArrayList<>());
+        Sala s4 = new Sala("Emergencias", enfermedades1, 400, new ArrayList<>());
+        Sala s5 = new SalaTerapia("Intenciva", true, "ElPEPE", "MorgeXD", enfermedades1, 80, new ArrayList<>());
         this.hospital.crearSala(s1);
         this.hospital.crearSala(s2);
         this.hospital.crearSala(s3);
