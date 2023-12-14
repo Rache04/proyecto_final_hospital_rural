@@ -208,6 +208,11 @@ public class Principal extends javax.swing.JFrame {
         jMenu3.add(jMenuItem6);
 
         jMenuItem7.setText("Pacientes");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7);
 
         jMenuItem8.setText("Salir");
@@ -239,7 +244,7 @@ public class Principal extends javax.swing.JFrame {
         if (!hospital.getSalas().isEmpty()) {
             AdicionarMedico medico = new AdicionarMedico(this, rootPaneCheckingEnabled, (HospitalRural) hospital);
             medico.setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "No hay ninguna sala registrada en el Hospital en la cual\npueda trabajar un médico");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -284,15 +289,27 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-     RegistroSala sal = new RegistroSala (this, rootPaneCheckingEnabled, (HospitalRural) hospital);
-     sal.setVisible(true);
+        if (!hospital.getSalas().isEmpty()) {
+            RegistroSala sal = new RegistroSala(this, rootPaneCheckingEnabled, (HospitalRural) hospital);
+            sal.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay Salas médicas registradas en el sistema");
+        }
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         // TODO add your handling code here:
-        RegistroMedico medic = new RegistroMedico (this, rootPaneCheckingEnabled, (HospitalRural) hospital);
-        medic.setVisible(true);
+        if (!hospital.getMedicos().isEmpty()) {
+            RegistroMedico medic = new RegistroMedico(this, rootPaneCheckingEnabled, (HospitalRural) hospital);
+            medic.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay medicos registrados en el sistema");
+        }
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments
