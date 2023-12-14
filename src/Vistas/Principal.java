@@ -3,8 +3,10 @@ package Vistas;
 import controllers.HospitalRural;
 import interfaces.IHospitalRural;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import models.Medico;
+import models.Paciente;
 import models.Sala;
 import models.SalaTerapia;
 
@@ -309,13 +311,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        // TODO add your handling code here:
-        if (sala.getPacientes().isEmpty()){
+        List<Paciente> pacientes = new ArrayList<>();
+        for (Sala aux : hospital.getSalas()) {
+            if (!aux.getPacientes().isEmpty()) {
+                pacientes.addAll(aux.getPacientes());
+            }
+        }
+        if (!pacientes.isEmpty()) {
             RegistroPaciente paciente = new RegistroPaciente(this, rootPaneCheckingEnabled, (HospitalRural) hospital);
             paciente.setVisible(true);
-            }else{
-            JOptionPane.showMessageDialog(null, "No hay pacientes registrados en el sistema");
-        } 
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay pacientes registrador en el sistema");
+        }
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**

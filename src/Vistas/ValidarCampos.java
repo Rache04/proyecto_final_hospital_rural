@@ -7,6 +7,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import models.Paciente;
 import models.Sala;
 
 public class ValidarCampos {
@@ -76,6 +77,16 @@ public class ValidarCampos {
         List<Sala> filterList = new ArrayList<>();
         for(Sala aux : filterSala){
             if (aux.getNombre().toLowerCase().contains(a)) {
+                filterList.add(aux);
+            }
+        }
+        return filterList;
+    }
+    
+    public static List<Paciente> filterPacientes(List<Paciente> filterSala, String a){
+        List<Paciente> filterList = new ArrayList<>();
+        for(Paciente aux : filterSala){
+            if (aux.getCi().contains(a)) {
                 filterList.add(aux);
             }
         }

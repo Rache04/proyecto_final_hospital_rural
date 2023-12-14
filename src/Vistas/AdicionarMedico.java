@@ -367,7 +367,7 @@ public class AdicionarMedico extends javax.swing.JDialog {
             Medico medico = new Medico(TextNombre.getText(), TextNI.getText(), especialidades, salaAux);
             this.hospital.addMedico(medico);
             JOptionPane.showMessageDialog(null, "Se ha añadido correctamente al médico: " + TextNombre.getText());
-
+            
             // Limpiar campos luego de agregar un paciente al sistema
             ValidarCampos.cleardField(TextEspc);
             ValidarCampos.cleardField(TextNI);

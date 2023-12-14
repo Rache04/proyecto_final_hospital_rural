@@ -28,9 +28,9 @@ public class CantPacientesGravesTest {
         Sala sala1 = new SalaTerapia(null, true, null, null, null, 0, pacientes);
         Sala sala2 = new SalaTerapia(null, true, null, null, null, 0, pacientes);
         Sala sala3 = new Sala(null, null, 0, pacientes);
-        hospital.crearSala(sala1);
-        hospital.crearSala(sala2);
-        hospital.crearSala(sala3);
+        hospital.addSala(sala1);
+        hospital.addSala(sala2);
+        hospital.addSala(sala3);
 
         // Act (Acción)
         int cantPacientesGraves = hospital.cantPacientesGraves();
@@ -57,9 +57,9 @@ public class CantPacientesGravesTest {
         Sala sala1 = new SalaTerapia(null, true, null, null, null, 0, pacientes);
         Sala sala2 = new SalaTerapia(null, true, null, null, null, 0, pacientes);
         Sala sala3 = new Sala(null, null, 0, pacientes);
-        hospital.crearSala(sala1);
-        hospital.crearSala(sala2);
-        hospital.crearSala(sala3);
+        hospital.addSala(sala1);
+        hospital.addSala(sala2);
+        hospital.addSala(sala3);
 
         // Act (Acción)
         int cantPacientesGraves = hospital.cantPacientesGraves();
@@ -82,9 +82,9 @@ public class CantPacientesGravesTest {
         Sala sala1 = new SalaTerapia(null, true, null, null, null, 0, pacientes);
         Sala sala2 = new Sala(null, null, 0, pacientes);
         Sala sala3 = new Sala(null, null, 0, pacientes);
-        hospital.crearSala(sala1);
-        hospital.crearSala(sala2);
-        hospital.crearSala(sala3);
+        hospital.addSala(sala1);
+        hospital.addSala(sala2);
+        hospital.addSala(sala3);
 
         // Act (Acción)
         int cantPacientesGraves = hospital.cantPacientesGraves();
