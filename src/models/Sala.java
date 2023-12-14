@@ -13,10 +13,10 @@ import java.util.ArrayList;
  * @author Rachel
  */
 public class Sala {
-    String nombre;
-    ArrayList<String> enfermedades;
-    int cantMaximaCamas;
-    ArrayList<Paciente> pacientes;
+    protected String nombre;
+    protected ArrayList<String> enfermedades;
+    protected int cantMaximaCamas;
+    protected ArrayList<Paciente> pacientes;
 
     public Sala(String nombre, ArrayList<String> enfermedades, int cantMaximaCamas, ArrayList<Paciente> pacientes) {
         this.nombre = nombre;

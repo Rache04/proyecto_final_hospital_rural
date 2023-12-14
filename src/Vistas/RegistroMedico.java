@@ -20,7 +20,9 @@ import models.SalaTerapia;
  * @author Gabriel
  */
 public class RegistroMedico extends javax.swing.JDialog {
-    DefaultTableModel modeloTablaSala = new DefaultTableModel();
+    
+    private Medico medico;
+    DefaultTableModel modeloTablaMedico = new DefaultTableModel();
     
     /**
      * Creates new form RegistroMedico
@@ -29,14 +31,23 @@ public class RegistroMedico extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setResizable(false);
-        setSize(625, 500);
+        setSize(660, 500);
         setLocationRelativeTo(null);
         
-        modeloTablaSala.addColumn("Nombre");
-        modeloTablaSala.addColumn("NI");
-        modeloTablaSala.addColumn("Especialidades");
-        modeloTablaSala.addColumn("Sala trabajo");
-        jTable1.setModel(modeloTablaSala);
+        modeloTablaMedico.addColumn("Nombre");
+        modeloTablaMedico.addColumn("NI");
+        modeloTablaMedico.addColumn("Especialidades");
+        modeloTablaMedico.addColumn("Sala trabajo");
+        jTable1.setModel(modeloTablaMedico);
+        
+        for (Medico elemento : hospital.getMedicos()){
+        String [] relleno = new String [4];
+        relleno [0] = elemento.getNombre();
+        relleno [1] = elemento.getCi();
+        relleno [2] = String.valueOf(elemento.getEspecialidades());
+        relleno [3] = String.valueOf(elemento.getSalas());
+        modeloTablaMedico.addRow(relleno);
+        }
     }
 
     /**
@@ -82,7 +93,7 @@ public class RegistroMedico extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 568, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -92,14 +103,12 @@ public class RegistroMedico extends javax.swing.JDialog {
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 600, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 640, 420));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         jButton1.setText("Buscar medico");
-
-        jTextField1.setText("jTextField1");
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -113,8 +122,8 @@ public class RegistroMedico extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,10 +136,10 @@ public class RegistroMedico extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 400, 50));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 440, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/negro formulario.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 500));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

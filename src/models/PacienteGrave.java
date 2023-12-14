@@ -11,8 +11,8 @@ package models;
  * @author Rachel
  */
 public class PacienteGrave extends Paciente {
-    private int tiempoEstimadoVida;
-    private String causa;
+    protected int tiempoEstimadoVida;
+    protected String causa;
 
     public PacienteGrave(int tiempoEstimadoVida, String causa, String ci, String nombreCompleto, String fechaNacimiento,
             String enfermedad, String fechaIngreso, int tiempoEstimadoPermanencia) {

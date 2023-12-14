@@ -13,9 +13,9 @@ import java.util.ArrayList;
  * @author Rachel
  */
 public class SalaTerapia extends Sala {
-    private String tipoSala;
-    private boolean companion;
-    private String nombreDirector;
+    protected String tipoSala;
+    protected boolean companion;
+    protected String nombreDirector;
 
     public SalaTerapia(String tipoSala, boolean companion, String nombreDirector, String nombre,
             ArrayList<String> enfermedades, int cantMaximaCamas, ArrayList<Paciente> pacientes) {

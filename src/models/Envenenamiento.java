@@ -11,8 +11,8 @@ package models;
  * @author Rachel
  */
 public class Envenenamiento extends PacienteGrave {
-    private String nombreSustancia;
-    private boolean intencionado;
+    protected String nombreSustancia;
+    protected boolean intencionado;
 
     public Envenenamiento(String nombreSustancia, boolean intencionado, int tiempoEstimadoVida, String causa, String ci,
             String nombreCompleto, String fechaNacimiento, String enfermedad, String fechaIngreso,

@@ -29,12 +29,8 @@ public class HospitalRural implements IHospitalRural {
     }
 
     @Override
-    public boolean addPaciente(Paciente paciente, Sala sala) throws NullPointerException{
-        try {
-            return sala.getPacientes().add(paciente);
-        } catch (NullPointerException e) {
-            throw e;
-        }
+    public boolean addPaciente(Paciente paciente, Sala sala) throws NullPointerException {
+        return sala.getPacientes().add(paciente);
     }
 
     @Override
