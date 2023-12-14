@@ -351,7 +351,23 @@ public class RegistroPaciente extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        hospital.eliminarPaciente(jLabel_PacienteSelecionado.getText());
+        ValidarCampos.cleardField(modeloTablaPaciente);
+
+        for (Sala sala : hospital.getSalas()) {
+            if (!sala.getPacientes().isEmpty()) {
+                for (Paciente elemento : sala.getPacientes()) {
+                    String[] relleno = new String[6];
+                    relleno[0] = elemento.getNombreCompleto();
+                    relleno[1] = elemento.getCi();
+                    relleno[2] = elemento.getFechaNacimiento();
+                    relleno[3] = elemento.getEnfermedad();
+                    relleno[4] = elemento.getFechaIngreso();
+                    relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
+                    modeloTablaPaciente.addRow(relleno);
+                }
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -359,7 +375,7 @@ public class RegistroPaciente extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
-        jLabel_PacienteSelecionado.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 0)));
+        jLabel_PacienteSelecionado.setText(String.valueOf(jTable1.getValueAt(jTable1.getSelectedRow(), 1)));
     }//GEN-LAST:event_jTable1MousePressed
 
     private void txt_BuscarPorCiKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_BuscarPorCiKeyReleased
