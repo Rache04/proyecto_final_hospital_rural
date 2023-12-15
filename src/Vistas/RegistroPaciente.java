@@ -410,9 +410,9 @@ public class RegistroPaciente extends javax.swing.JDialog {
                 && txt_CarnetDeIdentidadPaciente.getText().length() == 11
                 && txt_CarnetIdentidadMedico.getText().length() == 11) {
             if (hospital.pacienteAtendMedico(txt_CarnetDeIdentidadPaciente.getText(), txt_CarnetIdentidadMedico.getText())) {
-                JOptionPane.showConfirmDialog(null, "El Paciente con el numero de identidad: " + txt_CarnetDeIdentidadPaciente.getText() + "\nha sido atendido por el Médico con el número de identificación: " + txt_CarnetIdentidadMedico.getText());
+                JOptionPane.showMessageDialog(null, "El Paciente con el numero de identidad: " + txt_CarnetDeIdentidadPaciente.getText() + "\nha sido atendido por el Médico con el número de identificación: " + txt_CarnetIdentidadMedico.getText());
             } else {
-                JOptionPane.showConfirmDialog(null, "El Paciente con el numero de identidad: " + txt_CarnetDeIdentidadPaciente.getText() + "\nNO ha sido atendido por el Médico con el número de identificación: " + txt_CarnetIdentidadMedico.getText());
+                JOptionPane.showMessageDialog(null, "El Paciente con el numero de identidad: " + txt_CarnetDeIdentidadPaciente.getText() + "\nNO ha sido atendido por el Médico con el número de identificación: " + txt_CarnetIdentidadMedico.getText());
             }
         } else {
             JOptionPane.showMessageDialog(null, "Error al comprobar los numero de identificación. Verifique los datos");

@@ -2,19 +2,11 @@ package Vistas;
 
 import controllers.HospitalRural;
 import interfaces.IHospitalRural;
-import java.awt.Point;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.Asfixia;
 import models.Automovilistico;
@@ -824,7 +816,6 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         boolean sustanciaToxica;
         boolean faltaOxigeno;
         Calendar calendario = Calendar.getInstance();
-
         // Validación de campos
         try {
             if (txt_Nombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
@@ -872,7 +863,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error al validar el campo de Carnet de Identidad contacte al administrador: " + e);
         }
 
-        if (jRadioButton_PacienteEstable.isSelected() && jRadioButton_Accidente.isSelected()) {
+        if (jRadioButton_PacienteEstable.isSelected()) {
             try {
                 if (!ValidarCampos.comprobarCamposNumericos(txt_TiempoEnfermedad.getText())) {
                     flap = false;

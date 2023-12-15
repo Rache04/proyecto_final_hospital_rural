@@ -180,7 +180,7 @@ private HospitalRural hospital;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        List<Sala> filterSalas = ValidarCampos.filterSalas(hospital.getSalas(), jTextField1.getText());
+        List<Sala> filterSalas = ValidarCampos.filterSalas(hospital.getSalas(), jTextField1.getText().toLowerCase());
         ValidarCampos.cleardField(modeloTablaSala);
         for(Sala aux : filterSalas){
             String[] datos = new String[6];
