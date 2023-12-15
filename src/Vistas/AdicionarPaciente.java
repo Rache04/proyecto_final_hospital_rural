@@ -854,6 +854,10 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         boolean faltaOxigeno;
         Calendar calendario = Calendar.getInstance();
         // Validación de campos
+        if (jLabel_Seleccion_Tabla.getText().equals("Salas disponibles para ingresar al paciente:")) {
+            flap = false;
+            errors = errors + "\n-No ha selexionado una Sala adecuada para el paciente";
+        }
         try {
             if (txt_Nombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
                 flap = false;
@@ -1265,6 +1269,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void jComboBox_EnfermedadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox_EnfermedadItemStateChanged
 //  Repintar la tabla segun una nueva seleción en el comboBox de las enfermedades
+        jLabel_Seleccion_Tabla.setText("Salas disponibles para ingresar al paciente:");
         if (jRadioButton_PacienteEstable.isSelected()) {
             DefaultTableModel model = new DefaultTableModel() {
                 public boolean isCellEditable(int row, int col) {
