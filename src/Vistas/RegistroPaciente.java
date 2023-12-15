@@ -344,8 +344,9 @@ public class RegistroPaciente extends javax.swing.JDialog {
                 && ValidarCampos.comprobarCamposNumericos(txt_TrasladoPaciente.getText())
                 && txt_TrasladoPaciente.getText().length() == 11) {
 
-            hospital.trasladarPaciente(txt_trasladarSala.getText(), txt_trasladarSala.getText());
-            JOptionPane.showMessageDialog(null, "El paciente ha sido agregado satisfactoriamente");
+            hospital.trasladarPaciente(txt_TrasladoPaciente.getText(), txt_trasladarSala.getText());
+             
+            JOptionPane.showMessageDialog(null, "El paciente ha sido trasladado satisfactoriamente");
 
         } else {
             JOptionPane.showMessageDialog(null, "Error al comprobar los campos. Verifique los datos");
