@@ -34,7 +34,9 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
         HashSet<String> superConjuntoEnfermedades = new HashSet<>();
         for (Sala aux : this.hospital.getSalas()) {
-            superConjuntoEnfermedades.addAll(aux.getEnfermedades());
+            if (!(aux instanceof SalaTerapia)) {
+                superConjuntoEnfermedades.addAll(aux.getEnfermedades());
+            }
         }
 
         listEnfermedades.addAll(superConjuntoEnfermedades);
@@ -215,6 +217,11 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jComboBox_Enfermedad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox_EnfermedadItemStateChanged(evt);
+            }
+        });
+        jComboBox_Enfermedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_EnfermedadActionPerformed(evt);
             }
         });
         jPanel1.add(jComboBox_Enfermedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 190, -1));
@@ -700,7 +707,22 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         txt_TiempoEnfermedad.setVisible(true);
         txt_Tratamiento.setVisible(true);
         jPanel_PacienteGrave.setVisible(false);
+        jLabel_Seleccion_Tabla.setText("");
 
+        HashSet<String> superConjuntoEnfermedades = new HashSet<>();
+        for (Sala aux : this.hospital.getSalas()) {
+            if (!(aux instanceof SalaTerapia)) {
+                superConjuntoEnfermedades.addAll(aux.getEnfermedades());
+            }
+        }
+        ValidarCampos.cleardField(listEnfermedades);
+        listEnfermedades.addAll(superConjuntoEnfermedades);
+        Collections.sort(listEnfermedades);
+        jComboBox_Enfermedad.removeAllItems();
+        for (String aux : listEnfermedades) {
+            jComboBox_Enfermedad.addItem(aux);
+        }
+        
 //        Llenar la tabla si el usuario cambia el estado del paciente a estable
         DefaultTableModel model = new DefaultTableModel() {
             public boolean isCellEditable(int row, int col) {
@@ -743,7 +765,22 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         if (jRadioButton_Accidente.isSelected()) {
             jPanel_PacienteGrave.setVisible(true);
         }
+        jLabel_Seleccion_Tabla.setText("Salas disponibles para ingresar al paciente:");
 
+        HashSet<String> superConjuntoEnfermedades = new HashSet<>();
+        for (Sala aux : this.hospital.getSalas()) {
+            if (aux instanceof SalaTerapia) {
+                superConjuntoEnfermedades.addAll(aux.getEnfermedades());
+            }
+        }
+        ValidarCampos.cleardField(listEnfermedades);
+        listEnfermedades.addAll(superConjuntoEnfermedades);
+        Collections.sort(listEnfermedades);
+        jComboBox_Enfermedad.removeAllItems();
+        for (String aux : listEnfermedades) {
+            jComboBox_Enfermedad.addItem(aux);
+        }
+        
 //        Llenar la tabla si el usuario cambia el estado del paciente a Grave
         DefaultTableModel model = new DefaultTableModel() {
             public boolean isCellEditable(int row, int col) {
@@ -757,7 +794,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         jTable_Salas.setModel(model);
         String[] datos = new String[4];
         for (Sala aux : this.hospital.getSalas()) {
-            if (aux instanceof SalaTerapia) {
+            if (aux instanceof SalaTerapia && aux.getEnfermedades().contains(String.valueOf(jComboBox_Enfermedad.getSelectedItem()))) {
                 SalaTerapia salaTerapia = (SalaTerapia) aux;
                 datos[0] = salaTerapia.getNombre();
                 datos[1] = salaTerapia.getTipoSala();
@@ -1269,7 +1306,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             jTable_Salas.setModel(model);
             String[] datos = new String[4];
             for (Sala aux : hospital.getSalas()) {
-                if (aux instanceof SalaTerapia) {
+                if (aux instanceof SalaTerapia && aux.getEnfermedades().contains(String.valueOf(jComboBox_Enfermedad.getSelectedItem()))) {
                     SalaTerapia salaTerapia = (SalaTerapia) aux;
                     datos[0] = salaTerapia.getNombre();
                     datos[1] = salaTerapia.getTipoSala();
@@ -1284,6 +1321,10 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_jComboBox_EnfermedadItemStateChanged
+
+    private void jComboBox_EnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_EnfermedadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox_EnfermedadActionPerformed
 
     /**
      * @param args the command line arguments
