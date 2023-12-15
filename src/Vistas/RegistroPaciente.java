@@ -43,22 +43,24 @@ public class RegistroPaciente extends javax.swing.JDialog {
         setLocationRelativeTo(null);
 
         modeloTablaPaciente.addColumn("Nombre");
-        modeloTablaPaciente.addColumn("NI");
+        modeloTablaPaciente.addColumn("CI");
         modeloTablaPaciente.addColumn("Fecha nacimiento");
         modeloTablaPaciente.addColumn("Enfermedad");
         modeloTablaPaciente.addColumn("Estado");
         modeloTablaPaciente.addColumn("Tiempo de permanencia");
+        modeloTablaPaciente.addColumn("Sala");
         jTable1.setModel(modeloTablaPaciente);
 
         for (Sala sala : hospital.getSalas()) {
             for (Paciente elemento : sala.getPacientes()) {
-                String[] relleno = new String[6];
+                String[] relleno = new String[7];
                 relleno[0] = elemento.getNombreCompleto();
                 relleno[1] = elemento.getCi();
                 relleno[2] = elemento.getFechaNacimiento();
                 relleno[3] = elemento.getEnfermedad();
                 relleno[4] = hospital.conocerEstadoPaciente(elemento.getCi());
                 relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
+                relleno[6] = sala.getNombre();
                 modeloTablaPaciente.addRow(relleno);
             }
 
@@ -357,13 +359,14 @@ public class RegistroPaciente extends javax.swing.JDialog {
         for (Sala sala : hospital.getSalas()) {
             if (!sala.getPacientes().isEmpty()) {
                 for (Paciente elemento : sala.getPacientes()) {
-                    String[] relleno = new String[6];
+                    String[] relleno = new String[7];
                     relleno[0] = elemento.getNombreCompleto();
                     relleno[1] = elemento.getCi();
                     relleno[2] = elemento.getFechaNacimiento();
                     relleno[3] = elemento.getEnfermedad();
                     relleno[4] = hospital.conocerEstadoPaciente(elemento.getCi());
                     relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
+                    relleno[6] = sala.getNombre();
                     modeloTablaPaciente.addRow(relleno);
                 }
             }
@@ -385,7 +388,7 @@ public class RegistroPaciente extends javax.swing.JDialog {
         pacientes = ValidarCampos.filterPacientes(pacientes, txt_BuscarPorCi.getText());
 
         for (Paciente elemento : pacientes) {
-            String[] relleno = new String[6];
+            String[] relleno = new String[7];
             relleno[0] = elemento.getNombreCompleto();
             relleno[1] = elemento.getCi();
             relleno[2] = elemento.getFechaNacimiento();
