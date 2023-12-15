@@ -227,9 +227,9 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Traslado");
+        jMenu4.setText("Acerca de");
 
-        jMenuItem9.setText("Paciente");
+        jMenuItem9.setText("Software");
         jMenu4.add(jMenuItem9);
 
         jMenuBar1.add(jMenu4);

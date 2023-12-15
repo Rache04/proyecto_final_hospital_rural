@@ -170,7 +170,7 @@ public class AdicionarSala extends javax.swing.JDialog {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Terapia Intenciva:");
+        jLabel10.setText("Terapia Intensiva:");
         jPanel_SalaTerapia.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 110, -1));
 
         buttonGroup3.add(jRadioButton_TerapiaIntenciva);

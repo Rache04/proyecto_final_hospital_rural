@@ -86,12 +86,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Traslado"/>
+            <Property name="text" type="java.lang.String" value="Acerca de"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Paciente"/>
+                <Property name="text" type="java.lang.String" value="Software"/>
               </Properties>
             </MenuItem>
           </SubComponents>
