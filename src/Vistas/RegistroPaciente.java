@@ -340,11 +340,33 @@ public class RegistroPaciente extends javax.swing.JDialog {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         boolean flap = true;
+        
+        if (txt_trasladarSala.getText().isEmpty()){
+           JOptionPane.showMessageDialog(null, "Escriba el nombre de la sala"); 
+        }else
+            
         if (ValidarCampos.comprobarCamposTexto(txt_trasladarSala.getText())
                 && ValidarCampos.comprobarCamposNumericos(txt_TrasladoPaciente.getText())
                 && txt_TrasladoPaciente.getText().length() == 11) {
+            
 
             hospital.trasladarPaciente(txt_TrasladoPaciente.getText(), txt_trasladarSala.getText());
+            ValidarCampos.cleardField(modeloTablaPaciente);
+            for (Sala sala : hospital.getSalas()) {
+            if (!sala.getPacientes().isEmpty()) {
+                for (Paciente elemento : sala.getPacientes()) {
+                    String[] relleno = new String[7];
+                    relleno[0] = elemento.getNombreCompleto();
+                    relleno[1] = elemento.getCi();
+                    relleno[2] = elemento.getFechaNacimiento();
+                    relleno[3] = elemento.getEnfermedad();
+                    relleno[4] = hospital.conocerEstadoPaciente(elemento.getCi());
+                    relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
+                    relleno[6] = sala.getNombre();
+                    modeloTablaPaciente.addRow(relleno);
+                }
+            }
+        }
              
             JOptionPane.showMessageDialog(null, "El paciente ha sido trasladado satisfactoriamente");
 
