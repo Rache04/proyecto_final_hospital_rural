@@ -264,7 +264,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Día");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 30, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 30, -1));
 
         txt_NacimientoMes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_NacimientoMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -278,7 +278,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoMesKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 90, 30, 20));
+        jPanel1.add(txt_NacimientoMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 30, 20));
 
         txt_NacimientoYeard.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_NacimientoYeard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -292,7 +292,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoYeardKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoYeard, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 40, 20));
+        jPanel1.add(txt_NacimientoYeard, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 40, 20));
 
         txt_NacimientoDia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_NacimientoDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -306,23 +306,23 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_NacimientoDiaKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_NacimientoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 30, 20));
+        jPanel1.add(txt_NacimientoDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 30, 20));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Mes");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 60, 30, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 30, -1));
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("Año");
-        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 30, -1));
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 30, -1));
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 40, 130, -1));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 130, -1));
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("Tiempo de Permenencia:");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 160, -1));
+        jLabel20.setText("Tiempo de Permenencia en Días:");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, 210, -1));
 
         txt_TiempoEstimadoPermanencia.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_TiempoEstimadoPermanencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -336,7 +336,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
                 txt_TiempoEstimadoPermanenciaKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_TiempoEstimadoPermanencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, 30, 20));
+        jPanel1.add(txt_TiempoEstimadoPermanencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 30, 20));
 
         txt_TiempoEstimadoVida.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         txt_TiempoEstimadoVida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -846,7 +846,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
 
     private void jButton_AddEnfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddEnfermedadActionPerformed
         boolean flap = true;
-        String errors = "Error al ingresar paciente. Conprueve los siguientes campos:";
+        String errors = "Error al ingresar paciente. Compruebe los siguientes campos:";
         String causa;
         boolean chofer;
         boolean envenenado;
@@ -856,7 +856,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         // Validación de campos
         if (jLabel_Seleccion_Tabla.getText().equals("Salas disponibles para ingresar al paciente:")) {
             flap = false;
-            errors = errors + "\n-No ha selexionado una Sala adecuada para el paciente";
+            errors = errors + "\n-No ha seleccionado una Sala adecuada para el paciente";
         }
         try {
             if (txt_Nombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {

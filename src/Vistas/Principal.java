@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import models.Medico;
 import models.Paciente;
 import models.Sala;
-import models.SalaTerapia;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -20,28 +19,6 @@ public class Principal extends javax.swing.JFrame {
         setResizable(false);
         setSize(625, 630);
         setLocationRelativeTo(null);
-
-        ArrayList<String> enfermedades = new ArrayList<>();
-        enfermedades.add("Catarro");
-        enfermedades.add("Gripe");
-        enfermedades.add("Cida");
-        enfermedades.add("Gangrena");
-        ArrayList<String> enfermedades1 = new ArrayList<>();
-        enfermedades1.add("Fiebre");
-        enfermedades1.add("AcidoXD");
-        enfermedades1.add("Loco");
-        enfermedades1.add("Catarro");
-
-        Sala s1 = new Sala("Quemado", enfermedades, 15, new ArrayList<>());
-        Sala s2 = new Sala("Operaciones", enfermedades1, 10, new ArrayList<>());
-        Sala s3 = new SalaTerapia("Intenciva", true, "Juan Alverto", "Extrangería", enfermedades, 23, new ArrayList<>());
-        Sala s4 = new Sala("Emergencias", enfermedades1, 400, new ArrayList<>());
-        Sala s5 = new SalaTerapia("Intenciva", true, "ElPEPE", "MorgeXD", enfermedades1, 80, new ArrayList<>());
-        this.hospital.addSala(s1);
-        this.hospital.addSala(s2);
-        this.hospital.addSala(s3);
-        this.hospital.addSala(s4);
-        this.hospital.addSala(s5);
     }
 
     /**

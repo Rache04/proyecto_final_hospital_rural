@@ -362,7 +362,10 @@ public class AdicionarMedico extends javax.swing.JDialog {
                     salaAux.add(aux);
                 }
             }
-            Medico medico = new Medico(TextNombre.getText(), TextNI.getText(), especialidades, salaAux);
+            ArrayList<String> addEspecialidades = new ArrayList<>();
+            addEspecialidades.addAll(especialidades);
+            
+            Medico medico = new Medico(TextNombre.getText(), TextNI.getText(), addEspecialidades, salaAux);
             this.hospital.addMedico(medico);
             JOptionPane.showMessageDialog(null, "Se ha añadido correctamente al médico: " + TextNombre.getText());
             
