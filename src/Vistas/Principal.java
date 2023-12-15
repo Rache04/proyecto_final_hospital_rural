@@ -13,7 +13,6 @@ import models.SalaTerapia;
 public class Principal extends javax.swing.JFrame {
 
     private IHospitalRural hospital;
-    private Sala sala;
 
     public Principal() {
         this.hospital = new HospitalRural(new ArrayList<Medico>(), new ArrayList<Sala>());

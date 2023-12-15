@@ -27,7 +27,7 @@ public class ComprobarCampoDeTextoTest {
         // Arrange (Preparación)
 
         // Act (Acción)
-        boolean test = ValidarCampos.comprobarCamposTexto("Juan Alverto");
+        boolean test = ValidarCampos.comprobarCamposTexto("Juan Alberto");
 
         // Assert (Verificación)
         assertTrue(test == true);
@@ -37,7 +37,7 @@ public class ComprobarCampoDeTextoTest {
         // Arrange (Preparación)
 
         // Act (Acción)
-        boolean test = ValidarCampos.comprobarCamposTexto("Migel_*");
+        boolean test = ValidarCampos.comprobarCamposTexto("Miguel_*");
 
         // Assert (Verificación)
         assertTrue(test == false);

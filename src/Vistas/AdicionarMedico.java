@@ -3,16 +3,8 @@ package Vistas;
 import controllers.HospitalRural;
 import interfaces.IHospitalRural;
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.Medico;
 import models.Sala;
@@ -326,6 +318,12 @@ public class AdicionarMedico extends javax.swing.JDialog {
         String validar = "";
         boolean flap = true;
 
+        // Validar campos
+        if (especialidades.isEmpty()) {
+            flap = false;
+            validar = validar + "\n-El médico no posee especialidades";
+        }
+        
         try {
             if (TextNombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(TextNombre.getText())) {
                 flap = false;

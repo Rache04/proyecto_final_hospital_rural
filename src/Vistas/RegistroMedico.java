@@ -3,27 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Vistas;
 
 import controllers.HospitalRural;
 import interfaces.IHospitalRural;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import models.Medico;
-import models.Sala;
-import models.SalaTerapia;
 
 /**
  *
  * @author Gabriel
  */
 public class RegistroMedico extends javax.swing.JDialog {
-    
-    private Medico medico;
+
     DefaultTableModel modeloTablaMedico = new DefaultTableModel();
-    
+
     /**
      * Creates new form RegistroMedico
      */
@@ -33,20 +27,20 @@ public class RegistroMedico extends javax.swing.JDialog {
         setResizable(false);
         setSize(660, 500);
         setLocationRelativeTo(null);
-        
+
         modeloTablaMedico.addColumn("Nombre");
         modeloTablaMedico.addColumn("NI");
         modeloTablaMedico.addColumn("Num Especialidades");
         modeloTablaMedico.addColumn("Num Sala trabajo");
         jTable1.setModel(modeloTablaMedico);
-        
-        for (Medico elemento : hospital.getMedicos()){
-        String [] relleno = new String [4];
-        relleno [0] = elemento.getNombre();
-        relleno [1] = elemento.getCi();
-        relleno [2] = String.valueOf(elemento.getEspecialidades().size());
-        relleno [3] = String.valueOf(elemento.getSalas().size());
-        modeloTablaMedico.addRow(relleno);
+
+        for (Medico elemento : hospital.getMedicos()) {
+            String[] relleno = new String[4];
+            relleno[0] = elemento.getNombre();
+            relleno[1] = elemento.getCi();
+            relleno[2] = String.valueOf(elemento.getEspecialidades().size());
+            relleno[3] = String.valueOf(elemento.getSalas().size());
+            modeloTablaMedico.addRow(relleno);
         }
     }
 

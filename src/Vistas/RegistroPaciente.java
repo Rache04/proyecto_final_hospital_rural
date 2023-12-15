@@ -6,15 +6,12 @@
 package Vistas;
 
 import controllers.HospitalRural;
-import interfaces.IHospitalRural;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import models.Medico;
 import models.Paciente;
 import models.Sala;
-import models.SalaTerapia;
 
 /**
  *
@@ -410,15 +407,19 @@ public class RegistroPaciente extends javax.swing.JDialog {
         ValidarCampos.cleardField(modeloTablaPaciente);
         pacientes = ValidarCampos.filterPacientes(pacientes, txt_BuscarPorCi.getText());
 
-        for (Paciente elemento : pacientes) {
-            String[] relleno = new String[7];
-            relleno[0] = elemento.getNombreCompleto();
-            relleno[1] = elemento.getCi();
-            relleno[2] = elemento.getFechaNacimiento();
-            relleno[3] = elemento.getEnfermedad();
-            relleno[4] = hospital.conocerEstadoPaciente(elemento.getCi());
-            relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
-            modeloTablaPaciente.addRow(relleno);
+        for (Sala sala : hospital.getSalas()) {
+            for (Paciente elemento : sala.getPacientes()) {
+                String[] relleno = new String[7];
+                relleno[0] = elemento.getNombreCompleto();
+                relleno[1] = elemento.getCi();
+                relleno[2] = elemento.getFechaNacimiento();
+                relleno[3] = elemento.getEnfermedad();
+                relleno[4] = hospital.conocerEstadoPaciente(elemento.getCi());
+                relleno[5] = String.valueOf(elemento.getTiempoEstimadoPermanencia());
+                relleno[6] = sala.getNombre();
+                modeloTablaPaciente.addRow(relleno);
+            }
+
         }
 
     }//GEN-LAST:event_txt_BuscarPorCiKeyReleased

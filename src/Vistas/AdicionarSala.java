@@ -3,13 +3,8 @@ package Vistas;
 import controllers.HospitalRural;
 import interfaces.IHospitalRural;
 import java.awt.Color;
-import java.awt.Point;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import models.Sala;
 import models.SalaTerapia;
@@ -364,7 +359,7 @@ public class AdicionarSala extends javax.swing.JDialog {
         }
 
         try {
-            if (!ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
+            if (txt_Nombre.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_Nombre.getText())) {
                 flap = false;
                 validacion = validacion + "\n-Nombre";
             }
@@ -374,7 +369,7 @@ public class AdicionarSala extends javax.swing.JDialog {
         }
         try {
             if (jRadioButton_SalaTerapia_Si.isSelected()) {
-                if (!ValidarCampos.comprobarCamposTexto(txt_NombreDirector.getText())) {
+                if (txt_NombreDirector.getText().equals("") || !ValidarCampos.comprobarCamposTexto(txt_NombreDirector.getText())) {
                     flap = false;
                     validacion = validacion + "\n-Nombre del Director";
                 }

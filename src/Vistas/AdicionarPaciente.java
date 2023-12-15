@@ -722,7 +722,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         for (String aux : listEnfermedades) {
             jComboBox_Enfermedad.addItem(aux);
         }
-        
+
 //        Llenar la tabla si el usuario cambia el estado del paciente a estable
         DefaultTableModel model = new DefaultTableModel() {
             public boolean isCellEditable(int row, int col) {
@@ -780,7 +780,7 @@ public class AdicionarPaciente extends javax.swing.JDialog {
         for (String aux : listEnfermedades) {
             jComboBox_Enfermedad.addItem(aux);
         }
-        
+
 //        Llenar la tabla si el usuario cambia el estado del paciente a Grave
         DefaultTableModel model = new DefaultTableModel() {
             public boolean isCellEditable(int row, int col) {
@@ -1087,6 +1087,64 @@ public class AdicionarPaciente extends javax.swing.JDialog {
             ValidarCampos.cleardField(txt_TiempoEstimadoPermanencia);
             ValidarCampos.cleardField(txt_TiempoEstimadoVida);
             ValidarCampos.cleardField(txt_Tratamiento);
+
+            //  Repintar la tabla luego dr agregar al paciente
+            jLabel_Seleccion_Tabla.setText("Salas disponibles para ingresar al paciente:");
+            if (jRadioButton_PacienteEstable.isSelected()) {
+                DefaultTableModel model = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int col) {
+                        return false;
+                    }
+                };;
+                model.addColumn("Nombre");
+                model.addColumn("Cantidad de Camas");
+                model.addColumn("Camas Disponibles");
+                jTable_Salas.setModel(model);
+                String[] datos = new String[3];
+                for (Sala aux : hospital.getSalas()) {
+                    if (aux instanceof SalaTerapia) {
+                    } else {
+                        for (String aux1 : aux.getEnfermedades()) {
+                            if (aux1.equals(jComboBox_Enfermedad.getSelectedItem())) {
+                                datos[0] = aux.getNombre();
+                                datos[1] = String.valueOf(aux.getCantMaximaCamas());
+                                if (aux.getPacientes() != null) {
+                                    datos[2] = String.valueOf(aux.getCantMaximaCamas() - aux.getPacientes().size());
+                                } else {
+                                    datos[2] = String.valueOf(aux.getCantMaximaCamas());
+                                }
+                                model.addRow(datos);
+                            }
+                        }
+                    }
+                }
+            } else {
+                DefaultTableModel model = new DefaultTableModel() {
+                    public boolean isCellEditable(int row, int col) {
+                        return false;
+                    }
+                };;
+                model.addColumn("Nombre");
+                model.addColumn("Tipo de Sala");
+                model.addColumn("Cantidad de Camas");
+                model.addColumn("Camas Disponibles");
+                jTable_Salas.setModel(model);
+                String[] datos = new String[4];
+                for (Sala aux : hospital.getSalas()) {
+                    if (aux instanceof SalaTerapia && aux.getEnfermedades().contains(String.valueOf(jComboBox_Enfermedad.getSelectedItem()))) {
+                        SalaTerapia salaTerapia = (SalaTerapia) aux;
+                        datos[0] = salaTerapia.getNombre();
+                        datos[1] = salaTerapia.getTipoSala();
+                        datos[2] = String.valueOf(salaTerapia.getCantMaximaCamas());
+                        if (aux.getPacientes() != null) {
+                            datos[3] = String.valueOf(salaTerapia.getCantMaximaCamas() - salaTerapia.getPacientes().size());
+                        } else {
+                            datos[3] = String.valueOf(salaTerapia.getCantMaximaCamas());
+                        }
+                        model.addRow(datos);
+                    }
+                }
+            }
 
         } else {
             JOptionPane.showMessageDialog(null, errors);
